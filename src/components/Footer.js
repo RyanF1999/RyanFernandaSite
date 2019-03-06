@@ -15,9 +15,10 @@ const Footer = (props) => {
 const StyledFooter = styled(Footer)`
     position: fixed;
     bottom: 0;
-    background-color: green;
+    background-color: black;
 
     p{
+        color: white;
         font-size: 125%;
     }
 `
