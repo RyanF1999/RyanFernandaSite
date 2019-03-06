@@ -11,7 +11,7 @@ const PortfolioRow = (props) => {
 }
 
 const StyledPortfolioRow = styled(PortfolioRow)`
-    height: 33%;
+    padding-bottom: 50px;
 `
 
 export default StyledPortfolioRow;

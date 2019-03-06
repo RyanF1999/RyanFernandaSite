@@ -15,13 +15,9 @@ class Portfolio extends Component {
                     <PortfolioList/>
                     <PortfolioList/>
                     <PortfolioList/>
-                </PortfolioRow>
-                <PortfolioRow>
                     <PortfolioList/>
                     <PortfolioList/>
                     <PortfolioList/>
-                </PortfolioRow>
-                <PortfolioRow>
                     <PortfolioList/>
                     <PortfolioList/>
                     <PortfolioList/>

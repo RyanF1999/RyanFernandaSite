@@ -3,9 +3,27 @@ import {Container, Row, Col} from 'reactstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Portfolio from './Portfolio';
-import {Route}   from 'react-router-dom';
+import {Route, withRouter}   from 'react-router-dom';
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {SetCurrentPage} from './actions/actions';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    bindActionCreators(SetCurrentPage, props.dispatch);
+
+  }
+
+  componentWillMount(){
+    if(this.props.location.pathname == '/'){
+      this.props.dispatch(SetCurrentPage('PORTFOLIO'));
+    }else{
+      this.props.dispatch(SetCurrentPage('CV'));
+    }
+  }
+
   render() {
     return (
       <Container fluid={true}>
@@ -20,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(withRouter(App));

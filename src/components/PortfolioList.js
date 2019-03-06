@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const PortfolioList = (props) => {
     return(
-        <Col xs="auto" sm="12" md="4" lg="4" xg="4" className={props.className + " py-4 px-2 text-center"}>
+        <Col xs="auto" sm="6" md="6" lg="4" xg="4" className={props.className + " py-4 px-2 text-center"}>
             <img className="img-fluid" src="https://via.placeholder.com/350x150.jpg"/>
         </Col>
     );

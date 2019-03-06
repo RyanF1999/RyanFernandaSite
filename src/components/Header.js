@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Row, Col} from 'reactstrap';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
+import NavigationLink from './NavigationLink';
 
 const StyledHeader = styled(Row)`
     background-color: orange;
@@ -16,23 +16,15 @@ class Header extends Component{
         return(
             <StyledHeader>
                 <Row className="w-100">
-                    <Col>
-                        <h1 className="text-center pt-2 pb-4">Ryan Fernanda</h1>
+                    <Col className="py-2">
+                        <h1 className="text-center">Ryan Fernanda</h1>
                     </Col>
                 </Row>
                 <Row className="w-100 justify-content-center">
-                    <Col xs="10" sm="8" md="8" lg="8" xg="8">
+                    <Col xs="10" sm="8" md="8" lg="8" xg="8" className="py-2">
                         <Row>
-                            <Col className="text-center">
-                                <Link to="/">
-                                    Portfolio
-                                </Link>
-                            </Col>
-                            <Col className="text-center">
-                                <Link to="/cv">
-                                    CV
-                                </Link>
-                            </Col>
+                            <NavigationLink linkTo="/" content="Portfolio" page='PORTFOLIO'/>
+                            <NavigationLink linkTo="/cv" content="CV" page='CV'/>
                         </Row>
                     </Col>
                 </Row>
