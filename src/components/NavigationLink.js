@@ -1,51 +1,80 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Col} from 'reactstrap';
-import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {SetCurrentPage} from '../actions/actions';
+import {Spring, config} from 'react-spring/renderprops';
 
-const NavigationLinkBase = (props) => {
-    return(
-        <Col className={props.className + " text-center "} page={props.page}>
-            <Link to={props.linkTo} onClick={props.onclick}>
-                {props.content}
-            </Link>
-        </Col>
-    );
-}
+class NavigationLink extends Component{
+    constructor(props){
+        super(props);
+        if(props.page == props.curPage){
+            this.state = {
+                active: true,
+                hover: false
+            }
+        }else{
+            this.state = {
+                active: false,
+                hover: false
+            }
+        }
 
-const StyledNavigationLink = styled(NavigationLinkBase)`
-    a{
-        font-size: 150%;
-        color: white;
-    
-        :hover{
-            color: blue;
-            text-decoration: none;
+        this.onhover = this.onhover.bind(this);
+        this.oncancel = this.oncancel.bind(this);
+    }
+
+    componentWillReceiveProps(next){
+        if(this.props.page == next.curPage){ 
+            this.setState({active: true});
+        }else{
+            this.setState({active: false});
         }
     }
-`
 
-const StyledNavigationLinkActive = styled(NavigationLinkBase)`
-    a{
-        font-size: 150%;
-        text-decoration: underline;
-        color: blue;
+    onhover(){
+        if(!this.state.hover)
+            this.setState({hover:true});
     }
-`
 
-const NavigationLink = (props) => {
-    if(props.page == props.curPage){
-        console.log(props.page + " == " + props.curPage);
+    oncancel(){
+        if(this.state.hover)
+            this.setState({hover:false});
+    }
+
+    render(){
         return(
-            <StyledNavigationLinkActive {...props}/>
-        );
-    }else{
-        console.log(props.page + " != " + props.curPage);
-        return(
-            <StyledNavigationLink {...props}/>
-        );
+            <Spring
+                items={this.state.active}
+                config={config.gentle}
+                from={{
+                    fontSize: '135%',
+                    color: 'white'
+                }}
+                to={{
+                    fontSize: this.state.active ? '165%' : '135%',
+                    color: 
+                        (this.state.active || this.state.hover) ?
+                        'blue' : 'white'
+                    ,
+                    textDecoration:
+                        (this.state.active) ? 'underline' 
+                        : (this.state.hover) ? 'none'
+                        : 'none'
+                }}
+            >
+                {(styles) => 
+                    <Col className={"text-center"} page={this.props.page}>
+                        <Link to={this.props.linkTo} onClick={this.props.onclick} 
+                            style={styles} 
+                            onMouseOver={this.onhover} 
+                            onMouseOut={this.oncancel}
+                        >
+                            {this.props.content}
+                        </Link>
+                    </Col>}
+            </Spring>
+        )
     }
 }
 

@@ -2,18 +2,22 @@ import React, { Component, lazy, Suspense} from 'react';
 import {Container} from 'reactstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import {Route, withRouter}   from 'react-router-dom';
+import {Route, withRouter, Switch}   from 'react-router-dom';
 
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {SetCurrentPage} from './actions/actions';
-import PortfolioPreview from './components/PortfolioPreview';
+import {Transition, config} from 'react-spring/renderprops';
 
 const Portfolio = lazy(() => import('./Portfolio'));
 
 class App extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      cur: 0,
+      prev: -1
+    }
     bindActionCreators(SetCurrentPage, props.dispatch);
 
   }
@@ -21,20 +25,63 @@ class App extends Component {
   componentWillMount(){
     if(this.props.location.pathname == '/'){
       this.props.dispatch(SetCurrentPage('PORTFOLIO'));
+      this.setState({cur: 0});
     }else{
       this.props.dispatch(SetCurrentPage('CV'));
+      this.setState({cur: 1});
     }
+  }
+
+  componentWillReceiveProps(next){
+    if(next.location.pathname == '/'){
+      this.setState({cur: 0, prev: 1});
+    }else{
+      this.setState({cur: 1, prev: 0});
+    }
+  }
+
+  componentDidUpdate(){
+    console.log(this.state);
+    console.log(this.props.location);
   }
 
   render() {
     return (
       <Container fluid={true}>
-        <PortfolioPreview isOpen={false} title="Test" content={()=>(<img className="img-fluid w-100" src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>)} desc="Test"/>
         <Header/>
 
         <Suspense fallback={<div>lel</div>}>
-          <Route exact path="/" render={ (props) => <Portfolio {...props}/> }/>
-          <Route path="/cv" render={ (props) => <Portfolio {...props}/> }/>
+          <Transition 
+          config={config.molasses}
+          immediate={(this.state.prev == -1) ? true : false}
+          items={this.state.cur}
+          from={{
+            transform: (this.state.cur > this.state.prev) 
+            ? 'translate3d(100%,0,0)'
+            : 'translate3d(-100%,0,0)',
+            position: 'absolute',
+            opacity: 0
+          }}
+          enter={{
+            transform: 'translate3d(0,0,0)', 
+            position: 'relative',
+            opacity: 1
+          }}
+          leave={{transform: (this.state.cur > this.state.prev) 
+            ? 'translate3d(-100%,0,0)'
+            : 'translate3d(100%,0,0)',
+            position: 'absolute',
+            opacity: 0
+          }}
+        >
+              {
+                  (item) => styles =>
+                    <Switch location={this.props.location}>
+                      <Route exact path="/" render={ (props) => <Portfolio {...props} styles={styles}/> }/>
+                      <Route path="/cv" render={ (props) => <Portfolio {...props} styles={styles}/> }/>
+                    </Switch>
+              }
+          </Transition>
         </Suspense>
 
         <Footer/>
@@ -43,4 +90,10 @@ class App extends Component {
   }
 }
 
-export default connect(null)(withRouter(App));
+const mapStateToProps = (state)=>{
+  return{
+    curPage: state.page
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(App));
