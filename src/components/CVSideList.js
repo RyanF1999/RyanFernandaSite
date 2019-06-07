@@ -15,17 +15,22 @@ const StyledImg = styled.img`
     width: 100%;
 `
 
-const CvSideContainer = (props) => {
+function CvSideContainer(props){
     let arrDesc;
     if(props.desc.constructor == Array)
         arrDesc = props.desc;
     else
         arrDesc = [props.desc];
 
-    let descriptions = arrDesc.map(
-        desc => <StyledDesc xs="12">
-            {desc}
-        </StyledDesc>
+    let index = -1;
+    let descriptions = arrDesc.map((desc) => {
+            index++;
+            return(
+                <StyledDesc xs="12" key={index}>
+                    {desc}
+                </StyledDesc>
+            );
+        }
     )
 
     return (

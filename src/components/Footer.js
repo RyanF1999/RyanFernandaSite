@@ -2,7 +2,7 @@ import React from 'react';
 import {Row, Col} from 'reactstrap';
 import styled from 'styled-components';
 
-const Footer = (props) => {
+function Footer(props){
     return(
         <Row className={props.className + " w-100"}>
             <Col>
@@ -13,9 +13,10 @@ const Footer = (props) => {
 }
 
 const StyledFooter = styled(Footer)`
-    position: fixed;
+    position: absolute;
     bottom: 0;
     background-color: black;
+    height: 50px;
 
     p{
         color: white;

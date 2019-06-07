@@ -8,8 +8,7 @@ const StyledSideContainerTitle = styled(Row)`
     font-weight: bold;
 `
 
-const CvSideContainer = (props) => {
-
+function CvSideContainer(props){
     return (
         <Container fluid={true} className={props.className + " pt-1 pb-3"}>
             <StyledSideContainerTitle>

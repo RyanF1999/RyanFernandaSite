@@ -2,7 +2,7 @@ import React from 'react';
 import {Row} from 'reactstrap';
 import styled from 'styled-components';
 
-const PortfolioRow = (props) => {
+function PortfolioRow(props){
     return(
         <Row className={props.className + " justify-content-center align-items-center w-100"}>
             {props.children}
