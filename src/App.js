@@ -8,8 +8,14 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {SetCurrentPage} from './actions/actions';
 import {Transition, config} from 'react-spring/renderprops';
+import styled from 'styled-components';
 
 const Portfolio = lazy(() => import('./Portfolio'));
+const CV = lazy(() => import('./CV'));
+
+const StyledContainer = styled(Container)`
+  min-height: 100%;
+`
 
 class App extends Component {
   constructor(props){
@@ -47,7 +53,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid={true}>
+      <StyledContainer fluid={true}>
         <Header/>
 
         <Suspense fallback={<div>lel</div>}>
@@ -55,6 +61,7 @@ class App extends Component {
           config={config.molasses}
           immediate={(this.state.prev == -1) ? true : false}
           items={this.state.cur}
+          keys={this.props.location.pathname}
           from={{
             transform: (this.state.cur > this.state.prev) 
             ? 'translate3d(100%,0,0)'
@@ -78,14 +85,14 @@ class App extends Component {
                   (item) => styles =>
                     <Switch location={this.props.location}>
                       <Route exact path="/" render={ (props) => <Portfolio {...props} styles={styles}/> }/>
-                      <Route path="/cv" render={ (props) => <Portfolio {...props} styles={styles}/> }/>
+                      <Route path="/cv" render={ (props) => <CV {...props} styles={styles}/> }/>
                     </Switch>
               }
           </Transition>
         </Suspense>
 
         <Footer/>
-      </Container>
+      </StyledContainer>
     );
   }
 }

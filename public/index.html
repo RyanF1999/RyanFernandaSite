@@ -23,14 +23,30 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Ryan Fernanda</title>
-
+    
     <style>
-      html, body{
-        min-height: 100%;
+      #root{
+        height: 100vh;
       }
 
-      
+      body{
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      ::-webkit-scrollbar{
+        width: 10px;  
+      }
+
+      ::-webkit-scrollbar-track{
+        background-color: rgb(110, 110, 110);
+      }
+
+      ::-webkit-scrollbar-thumb{
+        background-color: rgb(255, 255, 255);
+      }
     </style>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

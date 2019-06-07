@@ -34,10 +34,7 @@ class Portfolio extends Component {
                     <PortfolioList/>
                     <PortfolioList/>
                     <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
+                    
                 </PortfolioRow>
             </Row>
             </React.Fragment>
