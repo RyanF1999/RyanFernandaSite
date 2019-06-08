@@ -3,6 +3,8 @@ import {Row, Col} from 'reactstrap';
 import styled from 'styled-components';
 import CVSideContainer from './components/CVSideContainer';
 import CVSideList from './components/CVSideList';
+import CVMainContainer from './components/CVMainContainer';
+import CVMainList from './components/CVMainList';
 
 const StyledSideCV = styled(Col)`
     background-color: pink;
@@ -24,8 +26,20 @@ const StyledCV = styled(Row)`
 function CV(){
     return (
         <StyledCV className="justify-content-center">
-            <Col xs="9" sm="9" md="9" lg="9" xg="9">
-                
+            <Col xs="12" sm="12" md="8" lg="8" xg="8">
+                <CVMainContainer title="Test">
+                    <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
+                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
+                </CVMainContainer>
+                <CVMainContainer title="Test">
+                    <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
+                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
+                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
+                </CVMainContainer>
+                <CVMainContainer title="Test">
+                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
+                    <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
+                </CVMainContainer>
             </Col>
             <StyledSideCV>
                 <StyledSideImg className="justify-content-center py-5">
