@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
 import {Col} from 'reactstrap';
+import {useSelector, useDispatch} from 'react-redux';
 import {Spring, config} from 'react-spring/renderprops';
+import { ShowPreview } from '../actions/actions';
 
 function PortfolioList(props){
+    const dispatch = useDispatch();
     const [ishover, setHover] = useState(false);
+    const previewData = {
+        title: 'test',
+        desc: 'test',
+        imgdest: 'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+    };
     
     return(
         <Spring
@@ -29,6 +37,7 @@ function PortfolioList(props){
                         }}
                         onMouseOver={() => setHover(true)}
                         onMouseOut={() => setHover(false)}
+                        onClick={()=>{ dispatch(ShowPreview(previewData))}}
                     />
                 </Col>
             }

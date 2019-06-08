@@ -1,10 +1,22 @@
 import {combineReducers} from 'redux';
-import * as actions from '../actions/actions';
+import { SET_CURRENT_PAGE, HIDE_PREVIEW, SHOW_PREVIEW } from '../actions/actions';
 
 function currentPage(state = '', action){
     switch(action.type){
-        case actions.SET_CURRENT_PAGE:
+        case SET_CURRENT_PAGE:
             state = action.page;
+        break;
+    }
+    return state;
+}
+
+function setPreview(state = null, action){
+    switch(action.type){
+        case SHOW_PREVIEW:
+            state = action.preview;
+        break;
+        case HIDE_PREVIEW:
+            state = null;
         break;
     }
     return state;
@@ -12,7 +24,8 @@ function currentPage(state = '', action){
 
 const reducers = combineReducers(
     {
-        page: currentPage
+        page: currentPage,
+        preview: setPreview
     }
 );
 

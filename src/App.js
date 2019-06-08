@@ -23,10 +23,10 @@ function App(){
     const [prev, SetPrev] = useState(-1);
 	const {location} = useContext(__RouterContext);
 	const transitions = useTransition(location, location => location.pathname, {
-		from: {
+		from:{
 			transform: (cur > prev) ? 'translate3d(100%,0,0)' : 'translate3d(-100%,0,0)',
 			position: 'absolute',
-			opacity: 0
+			opacity: 0.5
 		},
 		enter: {
 			transform: 'translate3d(0,0,0)', 
@@ -37,7 +37,14 @@ function App(){
 			transform: (cur > prev) ? 'translate3d(-100%,0,0)' : 'translate3d(100%,0,0)',
 			position: 'absolute',
 			opacity: 0
-		}
+		},
+		config: {
+			mass: 25,
+			tension: 250,
+			friction: 150,
+			clamp: true
+		},
+		immediate: (prev == -1) ? true : false
 	});
   
     useEffect(()=>{
@@ -68,8 +75,6 @@ function App(){
 							<animated.div 
 								style={props} 
 								key={key}
-								config={config.molasses}
-								immediate={(prev == -1) ? true : false}
 							>
 								<Switch location={item}>
 									<Route exact path="/" component={Portfolio}/>
