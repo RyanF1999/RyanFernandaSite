@@ -19,7 +19,7 @@ const StyledTime = styled(Col)`
     text-align: center;
 `
 
-function CvSideContainer(props){
+function CvMainList(props){
     const Desc = ()=>{
         if(props.desc != undefined || props.desc != ''){
             return(
@@ -57,8 +57,8 @@ function CvSideContainer(props){
     );
 }
 
-const StyledSideContainer = styled(CvSideContainer)`
+const StyledCvMainList = styled(CvMainList)`
     
 `
 
-export default StyledSideContainer;
+export default StyledCvMainList;

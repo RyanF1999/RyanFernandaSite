@@ -12,7 +12,7 @@ const StyledMainContainerTitle = styled(Row)`
 
 function CvMainChilds(props){
     const delay = useMemo(
-        ()=> 650 * props.children.length * 0.18, [props.children.length]
+        ()=> 550 * props.children.length * 0.18, [props.children.length]
     );
     const _showChild = useSelector(state => state.cvlist.get(props.index));
     const [showChild, SetShow] = useState(true);
@@ -39,7 +39,7 @@ function CvMainChilds(props){
             transform: 'translate(0,0)'
         },
         config: {
-			duration: 650
+            duration: 550
         },
         reverse: !showChild,
         immediate: _showChild == undefined ? true : false,
@@ -50,11 +50,11 @@ function CvMainChilds(props){
         return(
             <React.Fragment>
                 {
-                    trail.map((style, index)=>
-                        <animated.div key={index} style={style}>
+                    trail.map((style, index)=>{
+                        return <animated.div className="col-6 col-lg-4" key={index} style={style}>
                             {props.children[index]}
                         </animated.div>
-                    )
+                    })
                 }
             </React.Fragment>
         );
@@ -68,7 +68,7 @@ const StyledContainer = styled(Container)`
     
 `
 
-function CvMainContainer(props){
+function CvMainSkillContainer(props){
     return (
         <StyledContainer fluid={true} className="pt-4">
             <StyledMainContainerTitle className="align-items-center">
@@ -79,9 +79,17 @@ function CvMainContainer(props){
                     {props.title}
                 </Col>
             </StyledMainContainerTitle>
-            <CvMainChilds index={props.index}>{props.children}</CvMainChilds>
+            <Row className=" pt-1 pb-2">
+                <CvMainChilds index={props.index}>
+                    {
+                        React.Children.map(props.children, (child)=>{
+                            return React.cloneElement(child, {index: props.index});
+                        })
+                    }
+                </CvMainChilds>
+            </Row>
         </StyledContainer>
     );
 }
 
-export default CvMainContainer;
+export default CvMainSkillContainer;
