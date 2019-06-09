@@ -17,11 +17,12 @@ const StyledContainer = styled(Container)`
     min-height: 100%;
 `
 
-function App(){
-    const dispatch = useDispatch();
+const AppContent = withRouter(()=>{
+	const dispatch = useDispatch();
+	const {location} = useContext(__RouterContext);
     const [cur, SetCur] = useState(0);
     const [prev, SetPrev] = useState(-1);
-	const {location} = useContext(__RouterContext);
+	
 	const transitions = useTransition(location, location => location.pathname, {
 		from:{
 			transform: (cur > prev) ? 'translate3d(100%,0,0)' : 'translate3d(-100%,0,0)',
@@ -44,7 +45,8 @@ function App(){
 			friction: 150,
 			clamp: true
 		},
-		immediate: (prev == -1) ? true : false
+		immediate: (prev == -1) ? true : false,
+		native: true
 	});
   
     useEffect(()=>{
@@ -65,25 +67,35 @@ function App(){
 	}, [location.pathname]);
 
     return (
+		<React.Fragment>
+			{
+				transitions.map(({item, props, key}) => {
+					return(
+						<animated.div 
+							style={props} 
+							key={key}
+						>
+							<Switch location={item}>
+								<Route exact path="/" component={Portfolio}/>
+								<Route path="/cv" component={CV}/>
+							</Switch>
+						</animated.div>
+					);
+				})
+			}
+		</React.Fragment>
+    );
+})
+
+
+
+function App(){
+    return (
 		<StyledContainer fluid={true}>
 			<Header/>
 
 			<Suspense fallback={<div>lel</div>}>
-				{
-					transitions.map(({item, props, key}) => {
-						return(
-							<animated.div 
-								style={props} 
-								key={key}
-							>
-								<Switch location={item}>
-									<Route exact path="/" component={Portfolio}/>
-									<Route path="/cv" component={CV}/>
-								</Switch>
-							</animated.div>
-						);
-					})
-				}
+				<AppContent/>
 			</Suspense>
 
 			<Footer/>
@@ -91,4 +103,4 @@ function App(){
     );
 }
 
-export default withRouter(App);
+export default App;

@@ -27,16 +27,16 @@ function CV(){
     return (
         <StyledCV className="justify-content-center">
             <Col xs="12" sm="12" md="8" lg="8" xg="8">
-                <CVMainContainer title="Test">
+                <CVMainContainer title="Test" index={0}>
                     <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                     <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                 </CVMainContainer>
-                <CVMainContainer title="Test">
+                <CVMainContainer title="Test" index={1}>
                     <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                     <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                     <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                 </CVMainContainer>
-                <CVMainContainer title="Test">
+                <CVMainContainer title="Test" index={2}>
                     <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                     <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                 </CVMainContainer>

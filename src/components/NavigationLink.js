@@ -3,9 +3,9 @@ import {Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {SetCurrentPage} from '../actions/actions';
-import {Spring, config} from 'react-spring/renderprops';
+import {useSpring, animated, config} from 'react-spring';
 
-function NavigationLink(props){
+function AnimatedLink(props){
     const dispatch = useDispatch();
     const curPage = useSelector(state => state.page);
     const [active, SetActive] = useState(props.page == curPage ? true : false);
@@ -15,40 +15,41 @@ function NavigationLink(props){
         if(props.page == curPage) SetActive(true);
         else SetActive(false);
     }, [curPage]);
-    
+
+    const linkAnim = useSpring({
+        config: config.gentle,
+        from: {
+            fontSize: '135%',
+            color: 'white'
+        },
+        to: {
+            fontSize: active ? '165%' : '135%',
+            color: (active || hover) ?'blue' : 'white',
+            textDecoration: (active) ? 'underline' : (hover) ? 'none' : 'none'
+        },
+        native: true
+    });
+
     return(
-        <Spring
-            items={active}
-            config={config.gentle}
-            from={{
-                fontSize: '135%',
-                color: 'white'
-            }}
-            to={{
-                fontSize: active ? '165%' : '135%',
-                color: 
-                    (active || hover) ?
-                    'blue' : 'white'
-                ,
-                textDecoration:
-                    (active) ? 'underline' 
-                    : (hover) ? 'none'
-                    : 'none'
-            }}
+        <animated.p 
+            className="d-inline-block"
+            style={linkAnim}
+            onClick={() => dispatch(SetCurrentPage(props.page))} 
+            onMouseEnter={() => SetHover(true)} 
+            onMouseLeave={() => SetHover(false)}
         >
-            {(styles) => 
-                <Col className={"text-center"} page={props.page}>
-                    <Link 
-                        to={props.linkTo} 
-                        onClick={() => dispatch(SetCurrentPage(props.page))} 
-                        style={styles} 
-                        onMouseOver={() => SetHover(true)} 
-                        onMouseOut={() => SetHover(false)}
-                    >
-                        {props.content}
-                    </Link>
-                </Col>}
-        </Spring>
+            {props.content}
+        </animated.p>
+    );
+}
+
+function NavigationLink(props){
+    return(
+        <Col className={"text-center"}>
+            <Link to={props.linkTo}>
+                <AnimatedLink content={props.content} page={props.page}/>
+            </Link>
+        </Col>
     )
 }
 
