@@ -26,7 +26,7 @@ const AppContent = withRouter(()=>{
 	const transitions = useTransition(location, location => location.pathname, {
 		from:{
 			transform: (cur > prev) ? 'translate3d(100%,0,0)' : 'translate3d(-100%,0,0)',
-			position: 'absolute',
+			position: 'fixed',
 			opacity: 0.5
 		},
 		enter: {
@@ -36,13 +36,13 @@ const AppContent = withRouter(()=>{
 		},
 		leave: {
 			transform: (cur > prev) ? 'translate3d(-100%,0,0)' : 'translate3d(100%,0,0)',
-			position: 'absolute',
+			position: 'fixed',
 			opacity: 0
 		},
 		config: {
 			mass: 25,
-			tension: 250,
-			friction: 150,
+			tension: 300,
+			friction: 170,
 			clamp: true
 		},
 		immediate: (prev == -1) ? true : false,

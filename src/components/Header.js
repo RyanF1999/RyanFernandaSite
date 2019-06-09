@@ -3,24 +3,24 @@ import {Row, Col} from 'reactstrap';
 import styled from 'styled-components';
 import NavigationLink from './NavigationLink';
 
-const StyledHeader = styled(Row)`
+const StyledRow = styled(Row)`
     background-color: orange;
 `
 
 function Header(props){
     return(
-        <StyledHeader>
-            <Row className="w-100">
+        <React.Fragment>
+            <StyledRow>
                 <Col className="py-2">
                     <h1 className="text-center">Ryan Fernanda</h1>
                 </Col>
-            </Row>
-            <Row className="w-100">
+            </StyledRow>
+            <StyledRow>
                 <Col>
                     <h3 className="text-center">IT Developer</h3>
                 </Col>
-            </Row>
-            <Row className="w-100 justify-content-center">
+            </StyledRow>
+            <StyledRow className="justify-content-center">
                 <Col xs="10" sm="8" md="8" lg="8" xg="8" className="pt-2 pb-4">
                     <Row>
                         <NavigationLink 
@@ -35,8 +35,8 @@ function Header(props){
                         />
                     </Row>
                 </Col>
-            </Row>
-        </StyledHeader>
+            </StyledRow>
+        </React.Fragment>
     );
 }
 

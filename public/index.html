@@ -30,8 +30,19 @@
         overflow-y: auto;
       }
 
+      @media (max-width: 575px) {
+        body{
+          overflow-y: -moz-scrollbars-none;
+          -ms-overflow-style: none;
+        }
+
+        body::-webkit-scrollbar{
+          width: 0px !important;
+        }
+      }
+
       ::-webkit-scrollbar{
-        width: 10px;  
+        width: 10px !important;
       }
 
       ::-webkit-scrollbar-track{

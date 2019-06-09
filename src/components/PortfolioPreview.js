@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import { HidePreview } from '../actions/actions';
 
 const StyledModal = styled(Modal)`
-    max-width: 75%;
+    max-width: 85%;
+    margin-top: 0px !important;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 const StyledHeader = styled(Col)`
