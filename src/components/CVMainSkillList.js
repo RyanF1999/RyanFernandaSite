@@ -1,24 +1,21 @@
 import React, {useMemo, useState, useEffect} from 'react';
-import {Row, Col} from 'reactstrap';
-import styled from 'styled-components';
 import {animated, useSpring} from 'react-spring';
 import {useSelector} from 'react-redux';
+import {Grid, Typography, Box} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 
-const StyledTitle = styled(Col)`
-    font-size: 150%;
-`
-
-const StyledBackgroundProgress = styled.div`
-    width: 100%;
-    height: 30px;
-    border-radius: 15px;
-    background-color: #d6d6d6;
-
-    div{
-        height: 100%;
-        border-radius: 15px;
+const useStyle = makeStyles({
+    root:{
+        width: '100%',
+        height: 30,
+        borderRadius: 15,
+        backgroundColor: '#d6d6d6'
+    },
+    progress:{
+        height: '100%',
+        borderRadius: 15
     }
-`
+});
 
 function Progress(props){
     const width = useMemo(
@@ -51,22 +48,29 @@ function Progress(props){
     });
 
     return(
-        <animated.div style={progressAnim}/>
+        <animated.div className={props.className} style={progressAnim}/>
     );
 }
 
+// have props: cur. max, index
 function CvMainSkillList(props){    
+    const style = useStyle();
+
     return (
-        <Row>
-            <StyledTitle xs="12">
-                {props.title}
-            </StyledTitle>
-            <Col xs="12">
-                <StyledBackgroundProgress className="mt-1 mb-2">
-                    <Progress cur={props.cur} max={props.max} index={props.index}/>
-                </StyledBackgroundProgress>
-            </Col>
-        </Row>
+        <React.Fragment>
+            <Grid item xs={12}>
+                <Box fontWeight="fontWeightBold">
+                    <Typography variant="h5">
+                        {props.title}
+                    </Typography>
+                </Box>
+            </Grid>
+            <Grid item xs={12}>
+                <div className={style.root}>
+                    <Progress {...props} className={style.progress}/>
+                </div>
+            </Grid>
+        </React.Fragment>
     );
 }
 

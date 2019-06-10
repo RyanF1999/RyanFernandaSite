@@ -1,21 +1,17 @@
 import React from 'react';
-import {Row, Col} from 'reactstrap';
-import styled from 'styled-components';
+import {Grid, Typography, Box} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 
-const StyledTitle = styled(Col)`
-    font-size: 100%;
-`
-
-const StyledDesc = styled(Col)`
-    font-size: 80%;
-`
-
-const StyledImg = styled.img`
-    height: auto;
-    width: 100%;
-`
+const useStyle = makeStyles({
+    root:{
+        height: 'auto',
+        width: '100%'
+    }
+});
 
 function CvSideContainer(props){
+    const style = useStyle();
+
     let arrDesc;
     if(props.desc.constructor == Array)
         arrDesc = props.desc;
@@ -26,32 +22,34 @@ function CvSideContainer(props){
     let descriptions = arrDesc.map((desc) => {
             index++;
             return(
-                <StyledDesc xs="12" key={index}>
-                    {desc}
-                </StyledDesc>
+                <Box marginBottom={2}>
+                    <Typography key={index} variant="h5">
+                        {desc}
+                    </Typography>
+                </Box>
             );
         }
     )
 
     return (
-        <Row className={props.className + " pt-1 pb-2"}>
-            <Col xs="3" className="px-0 align-self-center">
-                <StyledImg src={props.icon}/>
-            </Col>
-            <Col>
-                <Row>
-                    <StyledTitle xs="12">
-                        {props.title}
-                    </StyledTitle>
+        <React.Fragment>
+            <Grid item xs={3}>
+                <Box padding={2}>
+                    <img className={style.root} src={props.icon}/>
+                </Box>
+            </Grid>
+            <Grid item container xs={9} direction="column">
+                <Box padding={2}>
+                    <Box marginBottom={1}>
+                        <Typography variant="h3">
+                            {props.title}
+                        </Typography>
+                    </Box>
                     {descriptions}
-                </Row>
-            </Col>
-        </Row>
+                </Box>
+            </Grid>
+        </React.Fragment>
     );
 }
 
-const StyledSideContainer = styled(CvSideContainer)`
-    
-`
-
-export default StyledSideContainer;
+export default CvSideContainer;

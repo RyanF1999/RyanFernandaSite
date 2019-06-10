@@ -1,44 +1,45 @@
 import React, { useState, useEffect } from 'react';
-import {Container, Col, Row, Modal, Button} from 'reactstrap';
 import {useSelector, useDispatch} from 'react-redux';
-import styled from 'styled-components';
 import { HidePreview } from '../actions/actions';
+import {Grid, Typography, Modal, ButtonBase, Box} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 
-const StyledModal = styled(Modal)`
-    max-width: 85%;
-    margin-top: 0px !important;
-    margin-left: auto;
-    margin-right: auto;
-`
-
-const StyledHeader = styled(Col)`
-    background-color: #1DC2BF;
-    box-shadow: 0px 0.2px 0.5px 1px grey;
-    text-align: center;
-    font-size: 135%;
-`
-
-const StyledDesc = styled(Col)`
-    background: whitesmoke;
-`
-
-const StyledContent = styled(Col)`
-    background: black;
-    min-height: 75%;
-    height: 70vh;
-    
-`
-
-const StyledCloseButton = styled(Button)`
-    float: right;
-    background-color: #1DC2BF;
-    box-shadow: 0 0 3.5px #292929;
-    :hover{
-        background-color: #424242;
+const useStyle = makeStyles({
+    root:{
+        maxWidth: '80%'
+    },
+    header:{
+        backgroundColor: '#1DC2BF',
+        boxShadow: '0px 0.2px 0.5px 1px grey',
+        height: 65
+    },
+    desc: {
+        background: 'whitesmoke'
+    },
+    content: {
+        background: 'black',
+        minHeight: '75%'
+    },
+    btn: {
+        '& button':{
+            backgroundColor: '#1DC2BF',
+            boxShadow: '0 0 3.5px #292929',
+            width: '90%',
+            height: 45,
+            fontSize: '125%'
+        },
+        '& button:hover': {
+            backgroundColor: '#424242'
+        }
+    },
+    img:{
+        height: 'auto',
+        width: '100%'
     }
-`
+});
 
 function PortfolioPreview(){
+    const style = useStyle();
     const dispatch = useDispatch();
     const [isOpen, SetOpen] = useState(false);
     const detail = useSelector(state => state.preview);
@@ -49,28 +50,30 @@ function PortfolioPreview(){
     }, [detail]);
 
     return (
-        <StyledModal isOpen={isOpen} centered={true}>
-            <Container fluid={true} className="h-100 px-0">
-                <Row className="w-100 h-100" noGutters={true}>
-                    <StyledHeader xs="12" sm="12" md="12" lg="12" xg="12" className="p-2">
-                        {detail == null ? '' : detail.title}
-                        <StyledCloseButton className="h-100" onClick={() => dispatch(HidePreview())}>
-                            Close
-                        </StyledCloseButton>
-                    </StyledHeader>
-                    <StyledContent xs="12" sm="12" md="8" lg="8" xg="9" className="h-auto py-4 px-1">
-                        <Row className="align-items-center h-100">
-                            <Col>
-                                <img className="img-fluid w-100" src={detail == null ? '' : detail.imgdest}/>
-                            </Col>    
-                        </Row>
-                    </StyledContent>
-                    <StyledDesc xs="12" sm="12" md="4" lg="4" xg="3">
+        <Modal open={isOpen}>
+            <Box height={1} display="flex" justifyContent="center" alignItems="center">
+                <Grid container className={style.root}>
+                    <Grid container item className={style.header} alignItems="center">
+                        <Grid item xs={10} sm={11}>
+                            <Typography variant="h5" align="center">
+                                {detail == null ? '' : detail.title}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={2} sm={1} className={style.btn}>
+                            <ButtonBase onClick={() => dispatch(HidePreview())} variant="contained">
+                                Close
+                            </ButtonBase>
+                        </Grid>
+                    </Grid>
+                    <Grid container item xs={12} sm={8} alignItems="center" className={style.content}>
+                        <img className={style.img} src={detail == null ? '' : detail.imgdest}/>
+                    </Grid>
+                    <Grid className={style.desc} item xs>
                         {detail == null ? '' : detail.desc}
-                    </StyledDesc>
-                </Row>
-            </Container>
-        </StyledModal>
+                    </Grid>
+                </Grid>
+            </Box>
+        </Modal>
     );
 }
 

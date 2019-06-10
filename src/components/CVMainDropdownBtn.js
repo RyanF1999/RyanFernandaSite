@@ -1,31 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import {animated, useSpring} from 'react-spring';
 import {useSelector, useDispatch} from 'react-redux';
 import { ShowCvList, HideCvList } from '../actions/actions';
+import {makeStyles} from '@material-ui/styles';
 
 const btndown = "M19.693,0.456l2.857,0l-11.27,17.328l-11.27,-17.328l2.857,0l8.413,12.934l8.413,-12.934Z";
 const btnup = "M2.867,17.544l-2.857,0l11.27,-17.328l11.27,17.328l-2.857,0l-8.413,-12.934l-8.413,12.934Z";
 
-const StyledButton = animated(styled.div`
-    height: 50px;
-    width: 50px;
-    background-color: transparent;
-    border: 2px solid black;
-    padding: 0px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    will-change: border-color;
-    svg{
-        width: 25px;
-        height: 20px;
-        will-change: transform;
+const useStyle = makeStyles({
+    root:{
+        height: 50,
+        width: 50,
+        backgroundColor: 'transparent',
+        border: '2px solid black',
+        padding: '0px',
+        borderRadius: '5px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        willChange: 'border-color'
+    },
+    svg:{
+        width: 25,
+        height: 20,
+        willChange: 'transform'
     }
-`)
+});
 
 function CvMainDropdownBtn(props){
+    const style = useStyle();
     const dispatch = useDispatch();
     const _showChild = useSelector(state => state.cvlist.get(props.index));
     const [showChild, SetShow] = useState(true);
@@ -45,7 +48,8 @@ function CvMainDropdownBtn(props){
 
     const StyledButtonInline = {borderColor: btnAnim.color};
     return (
-        <StyledButton 
+        <animated.div
+            className={style.root}
             style={StyledButtonInline}
             onClick={
                 () => showChild 
@@ -55,13 +59,13 @@ function CvMainDropdownBtn(props){
             onMouseEnter={() => SetHover(true)}
             onMouseLeave={() => SetHover(false)}
         >
-            <animated.svg transform={btnAnim.transform}>
+            <animated.svg transform={btnAnim.transform} className={style.svg}>
                 <animated.path
                     d={btnAnim.shape} 
                     fill={btnAnim.color} 
                 />
             </animated.svg>
-        </StyledButton>
+        </animated.div>
     );
 }
 

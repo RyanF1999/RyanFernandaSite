@@ -1,28 +1,21 @@
 import React from 'react';
-import {Container, Row, Col} from 'reactstrap';
-import styled from 'styled-components';
-
-const StyledSideContainerTitle = styled(Row)`
-    text-align: center;
-    font-size: 135%;
-    font-weight: bold;
-`
+import {Grid, Typography, Box} from '@material-ui/core';
 
 function CvSideContainer(props){
     return (
-        <Container fluid={true} className={props.className + " pt-1 pb-3"}>
-            <StyledSideContainerTitle>
-                <Col>
-                    {props.title}
-                </Col>
-            </StyledSideContainerTitle>
-            {props.children}
-        </Container>
+        <Grid container item xs={12} spacing={3}>
+            <Grid item xs={12}>
+                <Box fontWeight="fontWeightBold" textAlign="center">
+                    <Typography variant="h2">
+                        {props.title}
+                    </Typography>
+                </Box>
+            </Grid>
+            <Grid container item xs={12} spacing={1}>
+                {props.children}
+            </Grid>
+        </Grid>
     );
 }
 
-const StyledSideContainer = styled(CvSideContainer)`
-    
-`
-
-export default StyledSideContainer;
+export default CvSideContainer;

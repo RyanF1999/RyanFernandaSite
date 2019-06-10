@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {SetCurrentPage} from '../actions/actions';
 import {useSpring, animated, config} from 'react-spring';
+import {Grid, Typography} from '@material-ui/core';
 
 function AnimatedLink(props){
     const dispatch = useDispatch();
@@ -31,25 +31,28 @@ function AnimatedLink(props){
     });
 
     return(
-        <animated.p 
-            className="d-inline-block"
+        <Typography
+            component={animated.h6}
+            align="center"
+            display="inline"
+            variant="h6"
             style={linkAnim}
             onClick={() => dispatch(SetCurrentPage(props.page))} 
             onMouseEnter={() => SetHover(true)} 
             onMouseLeave={() => SetHover(false)}
         >
             {props.content}
-        </animated.p>
+        </Typography>
     );
 }
 
 function NavigationLink(props){
     return(
-        <Col className={"text-center"}>
-            <Link to={props.linkTo}>
+        <Grid item container xs={5} sm={4} justify="center">
+            <Link to={props.linkTo} style={{textDecoration: 'none'}}>
                 <AnimatedLink content={props.content} page={props.page}/>
             </Link>
-        </Col>
+        </Grid>
     )
 }
 

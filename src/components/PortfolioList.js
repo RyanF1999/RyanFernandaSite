@@ -1,10 +1,21 @@
 import React, {useState} from 'react';
-import {Col} from 'reactstrap';
 import {useSelector, useDispatch} from 'react-redux';
 import {useSpring, animated, config} from 'react-spring';
 import { ShowPreview } from '../actions/actions';
+import {Grid, Box} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 
-function AnimatedImage(){
+const useStyle = makeStyles({
+    root:{
+        height: 175
+    },
+    img:{
+        height: 'auto',
+        width: '100%'
+    }
+});
+
+function AnimatedImage(props){
     const dispatch = useDispatch();
     const previewData = {
         title: 'test',
@@ -28,12 +39,9 @@ function AnimatedImage(){
 
     return(
         <animated.img
-            className="img-fluid" 
+            className={props.style} 
             src="https://via.placeholder.com/350x150.jpg" 
-            style={{
-                ...imgAnim,
-                height: '175px'
-            }}
+            style={imgAnim}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
             onClick={()=> dispatch(ShowPreview(previewData))}
@@ -41,13 +49,13 @@ function AnimatedImage(){
     );
 }
 
-function PortfolioList(props){
+function PortfolioList(){
+    const style = useStyle();
+
     return(
-        <Col xs="auto" sm="6" md="6" lg="4" xg="4" 
-            className={props.className + " py-4 px-2 text-center"}
-        >
-            <AnimatedImage/>
-        </Col>
+        <Grid item container xs={12} sm={6} lg={4} justify="center" className={style.root}>
+            <AnimatedImage style={style.img}/>
+        </Grid>
     );
 }
 

@@ -1,21 +1,15 @@
 import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
 import {useDispatch} from 'react-redux';
-import {Container} from 'reactstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import {Route, withRouter, Switch, __RouterContext}   from 'react-router-dom';
+import {Route, withRouter, Switch, __RouterContext} from 'react-router-dom';
+import {Container, Box, CssBaseline} from '@material-ui/core';
 
 import {SetCurrentPage} from './actions/actions';
-import {useTransition, animated, config} from 'react-spring';
-import styled from 'styled-components';
+import {useTransition, animated} from 'react-spring';
 
 const Portfolio = lazy(() => import('./Portfolio'));
 const CV = lazy(() => import('./CV'));
-
-const StyledContainer = styled(Container)`
-    position: relative;
-    min-height: 100%;
-`
 
 const AppContent = withRouter(()=>{
 	const dispatch = useDispatch();
@@ -87,19 +81,18 @@ const AppContent = withRouter(()=>{
     );
 })
 
-
-
 function App(){
     return (
-		<StyledContainer fluid={true}>
+		<React.Fragment>
+			<CssBaseline/>
 			<Header/>
-
-			<Suspense fallback={<div>lel</div>}>
+			
+			<Suspense fallback={<div>lel</div>}>	
 				<AppContent/>
 			</Suspense>
-
+			
 			<Footer/>
-		</StyledContainer>
+		</React.Fragment>
     );
 }
 

@@ -1,27 +1,28 @@
 import React from 'react';
-import {Row, Col} from 'reactstrap';
-import styled from 'styled-components';
+import { Typography} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 
-function Footer(props){
+const useStyle = makeStyles({
+    root: {
+        backgroundColor: 'black',
+    },
+    text: {
+        color: 'white',
+        fontSize: '125%',
+        textAlign: 'center',
+        lineHeight: '50px'
+    }
+});
+
+function Footer(){
+    const style = useStyle();
     return(
-        <Row className={props.className + " w-100"}>
-            <Col>
-                <p className="text-center mb-0 py-2">Copyright Ryan Fernanda</p>
-            </Col>
-        </Row>
+        <footer className={style.root}>
+            <Typography variant="h3" className={style.text}>
+                Copyright Ryan Fernanda
+            </Typography>
+        </footer>
     );
 }
 
-const StyledFooter = styled(Footer)`
-    position: absolute;
-    bottom: 0;
-    background-color: black;
-    height: 50px;
-
-    p{
-        color: white;
-        font-size: 125%;
-    }
-`
-
-export default StyledFooter;
+export default Footer;

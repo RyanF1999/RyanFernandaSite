@@ -1,42 +1,60 @@
 import React from 'react';
-import {Row, Col} from 'reactstrap';
-import styled from 'styled-components';
+import {Grid, Typography} from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 import NavigationLink from './NavigationLink';
 
-const StyledRow = styled(Row)`
-    background-color: orange;
-`
+const useStyle = makeStyles({
+    root: {
+        backgroundColor: 'transparent'
+    },
+    title: {
+        backgroundColor: 'orange',
+        paddingTop: 10,
+        paddingBottom: 10,
+        boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.5)',
+        zIndex: 5
+    },
+    nav: {
+        backgroundColor: 'orange',
+        paddingTop: 20,
+        paddingBottom: 5,
+        boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
+        zIndex: 3
+    }
+})
 
-function Header(props){
+function Header(){
+    const style = useStyle();
+
     return(
-        <React.Fragment>
-            <StyledRow>
-                <Col className="py-2">
-                    <h1 className="text-center">Ryan Fernanda</h1>
-                </Col>
-            </StyledRow>
-            <StyledRow>
-                <Col>
-                    <h3 className="text-center">IT Developer</h3>
-                </Col>
-            </StyledRow>
-            <StyledRow className="justify-content-center">
-                <Col xs="10" sm="8" md="8" lg="8" xg="8" className="pt-2 pb-4">
-                    <Row>
-                        <NavigationLink 
-                            linkTo="/" 
-                            content="Portfolio" 
-                            page='PORTFOLIO' 
-                        />
-                        <NavigationLink 
-                            linkTo="/cv" 
-                            content="CV" 
-                            page='CV'
-                        />
-                    </Row>
-                </Col>
-            </StyledRow>
-        </React.Fragment>
+        <header>
+            <Grid 
+                container
+                justify="center"
+                spacing={2}
+                className={style.title}
+            >
+                <Grid item xs={12}>
+                    <Typography variant="h3" align="center">
+                        Ryan Fernanda
+                    </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography variant="h4" align="center">
+                        IT Developer
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Grid 
+                container
+                justify="center"
+                spacing={2}
+                className={style.nav}
+            >
+                <NavigationLink linkTo="/" content="Portfolio" page='PORTFOLIO'/>
+                <NavigationLink linkTo="/cv" content="CV" page='CV'/>
+            </Grid>
+        </header>
     );
 }
 

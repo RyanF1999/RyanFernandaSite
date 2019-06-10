@@ -1,24 +1,22 @@
 import React, {lazy} from 'react';
-import {Row} from 'reactstrap';
-import PortfolioRow from './components/PortfolioRow';
 import PortfolioList from './components/PortfolioList';
+import {Grid} from '@material-ui/core';
+import ContentContainer from './components/ContentContainer';
 
 const PortfolioPreview = lazy(() => import('./components/PortfolioPreview'));
 
 function Portfolio(){
     return (
-        <React.Fragment>
+        <ContentContainer>
             <PortfolioPreview />
-            <Row className="justify-content-center py-2">
-                <PortfolioRow>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                    <PortfolioList/>
-                </PortfolioRow>
-            </Row>
-        </React.Fragment>
+            <Grid container spacing={5}>
+                <PortfolioList/>
+                <PortfolioList/>
+                <PortfolioList/>
+                <PortfolioList/>
+                <PortfolioList/>
+            </Grid>
+        </ContentContainer>
     );
 }
 
