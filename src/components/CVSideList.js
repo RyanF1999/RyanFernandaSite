@@ -33,15 +33,15 @@ function CvSideContainer(props){
 
     return (
         <React.Fragment>
-            <Grid item xs={3}>
-                <Box padding={2}>
+            <Grid item xs={4}>
+                <Box padding={0.5}>
                     <img className={style.root} src={props.icon}/>
                 </Box>
             </Grid>
-            <Grid item container xs={9} direction="column">
-                <Box padding={2}>
+            <Grid item container xs={8} direction="column">
+                <Box padding={1}>
                     <Box marginBottom={1}>
-                        <Typography variant="h3">
+                        <Typography variant="h4">
                             {props.title}
                         </Typography>
                     </Box>

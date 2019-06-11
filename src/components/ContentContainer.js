@@ -12,8 +12,8 @@ function ContentContainer(props){
     const style = useStyle();
     
     return(
-        <Container className={style.root}>
-            <Box my={5}>
+        <Container maxWidth="xl" className={style.root}>
+            <Box py={4}>
                 {
                     props.children
                 }

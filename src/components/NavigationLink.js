@@ -32,10 +32,10 @@ function AnimatedLink(props){
 
     return(
         <Typography
-            component={animated.h6}
+            component={animated.h5}
             align="center"
             display="inline"
-            variant="h6"
+            variant="h5"
             style={linkAnim}
             onClick={() => dispatch(SetCurrentPage(props.page))} 
             onMouseEnter={() => SetHover(true)} 

@@ -1,13 +1,12 @@
 import React, {lazy} from 'react';
 import PortfolioList from './components/PortfolioList';
 import {Grid} from '@material-ui/core';
-import ContentContainer from './components/ContentContainer';
 
 const PortfolioPreview = lazy(() => import('./components/PortfolioPreview'));
 
 function Portfolio(){
     return (
-        <ContentContainer>
+        <React.Fragment>
             <PortfolioPreview />
             <Grid container spacing={5}>
                 <PortfolioList/>
@@ -16,7 +15,7 @@ function Portfolio(){
                 <PortfolioList/>
                 <PortfolioList/>
             </Grid>
-        </ContentContainer>
+        </React.Fragment>
     );
 }
 

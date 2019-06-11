@@ -3,7 +3,8 @@ import {useDispatch} from 'react-redux';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import {Route, withRouter, Switch, __RouterContext} from 'react-router-dom';
-import {Container, Box, CssBaseline} from '@material-ui/core';
+import {CssBaseline} from '@material-ui/core';
+import ContentContainer from './components/ContentContainer';
 
 import {SetCurrentPage} from './actions/actions';
 import {useTransition, animated} from 'react-spring';
@@ -87,9 +88,11 @@ function App(){
 			<CssBaseline/>
 			<Header/>
 			
-			<Suspense fallback={<div>lel</div>}>	
-				<AppContent/>
-			</Suspense>
+			<ContentContainer>
+				<Suspense fallback={<div>lel</div>}>	
+					<AppContent/>
+				</Suspense>
+			</ContentContainer>
 			
 			<Footer/>
 		</React.Fragment>

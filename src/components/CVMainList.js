@@ -35,7 +35,7 @@ function CvMainList(props){
                     </Typography>
                 </Grid>
             </Grid>
-            <Grid container item xs alignItems="center" justify="center">
+            <Grid container item xs alignItems="center" justify="flex-end">
                 <Box fontStyle="italic" fontWeight="fontWeightLight">
                     <Typography variant="h6">
                         {props.time}    

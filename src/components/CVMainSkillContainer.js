@@ -6,7 +6,7 @@ import CvMainChilds from './CVMainChilds';
 function CvMainSkillContainer(props){
     return (
         <Grid container item direction="row" spacing={3}>
-            <Grid container item alignItems="center" spacing={4}>
+            <Grid container item alignItems="center" direction="row" spacing={4}>
                 <Grid item xs="auto">
                     <CvMainDropdownBtn index={props.index}/>
                 </Grid>
@@ -18,7 +18,7 @@ function CvMainSkillContainer(props){
             </Grid>
             <CvMainChilds 
                 index={props.index} 
-                duration={550} 
+                duration={550}
                 container
                 xs={6}
                 md={4}

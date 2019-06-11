@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/styles';
 
 const useStyle = makeStyles({
     root:{
-        height: 175
+        height: 250
     },
     img:{
         height: 'auto',
