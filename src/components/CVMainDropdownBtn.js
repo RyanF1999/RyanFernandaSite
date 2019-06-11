@@ -35,7 +35,7 @@ function CvMainDropdownBtn(props){
     const [isHover, SetHover] = useState(false);
 
     useEffect(()=>{
-        if(_showChild != undefined) SetShow(_showChild);
+        if(_showChild !== undefined) SetShow(_showChild);
     }, [_showChild]);
     
     const btnAnim = useSpring({

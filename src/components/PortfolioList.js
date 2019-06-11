@@ -1,60 +1,66 @@
 import React, {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
 import {useSpring, animated, config} from 'react-spring';
-import { ShowPreview } from '../actions/actions';
-import {Grid, Box} from '@material-ui/core';
+import {Grid, Card, CardContent, CardHeader, CardMedia, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyle = makeStyles({
-    root:{
-        height: 250
+    root: {
+        backgroundColor: '#F2F3F3',
+        width: '100%',
+        paddingLeft: 15,
+        paddingRight: 15,
     },
-    img:{
-        height: 'auto',
-        width: '100%'
+    img: {
+        height: 300
+    },
+    title: {
+        textAlign: 'center'
     }
 });
 
-function AnimatedImage(props){
-    const dispatch = useDispatch();
-    const previewData = {
-        title: 'test',
-        desc: 'test',
-        imgdest: 'https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-    };
+function AnimatedList(props){
+    const style = useStyle();
     const [ishover, setHover] = useState(false);
     
-    const imgAnim = useSpring({
+    const anim = useSpring({
         config: config.stiff,
         from: {
             transform: 'scale3d(1, 1, 1)'
         },
         to: {
             transform: (ishover) 
-            ? 'scale3d(1.065, 1.065, 1.065)'
+            ? 'scale3d(1.05, 1.05, 1.05)'
             : 'scale3d(1, 1, 1)'
         },
         native: true
     });
 
     return(
-        <animated.img
-            className={props.style} 
-            src="https://via.placeholder.com/350x150.jpg" 
-            style={imgAnim}
+        <Card
+            className={style.root}
+            component={animated.div}
+            style={anim}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            onClick={()=> dispatch(ShowPreview(previewData))}
-        />
+            onClick={()=>{}}
+        >
+            <CardHeader title={props.title} className={style.title}/>
+            <CardMedia title={props.title} image={props.image} className={style.img}/>
+            <CardContent>
+                <Box height={50} fontWeight="fontWeightLight">
+                    <Typography>
+                        {props.desc}
+                    </Typography>
+                </Box>
+            </CardContent>
+        </Card>
     );
 }
 
-function PortfolioList(){
-    const style = useStyle();
-
+function PortfolioList(props){
     return(
-        <Grid item container xs={12} sm={6} lg={4} justify="center" className={style.root}>
-            <AnimatedImage style={style.img}/>
+        <Grid item container xs={11} sm={10} md={6} lg={4} justify="center">
+            <AnimatedList {...props}/>
         </Grid>
     );
 }

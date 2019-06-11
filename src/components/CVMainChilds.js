@@ -16,7 +16,7 @@ function CvMainChilds(props){
     const [isTransition, SetTransition] = useState(false);
 
     useEffect(()=>{
-        if(_showChild != undefined){
+        if(_showChild !== undefined){
             SetShow(_showChild);
             
             // cancel old set transition into null timeout
@@ -38,7 +38,7 @@ function CvMainChilds(props){
             duration: props.duration
         },
         reverse: !showChild,
-        immediate: _showChild == undefined ? true : false,
+        immediate: _showChild === undefined ? true : false,
         native: true
     });
 

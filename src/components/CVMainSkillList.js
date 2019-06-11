@@ -25,7 +25,7 @@ function Progress(props){
     const [showChild, SetShow] = useState(true);
 
     useEffect(()=>{
-        if(_showChild != undefined){
+        if(_showChild !== undefined){
             SetShow(_showChild);
         }
     }, [_showChild]);

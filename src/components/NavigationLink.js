@@ -8,11 +8,11 @@ import {Grid, Typography} from '@material-ui/core';
 function AnimatedLink(props){
     const dispatch = useDispatch();
     const curPage = useSelector(state => state.page);
-    const [active, SetActive] = useState(props.page == curPage ? true : false);
+    const [active, SetActive] = useState(props.page === curPage ? true : false);
     const [hover, SetHover] = useState(false);
 
     useEffect(()=>{
-        if(props.page == curPage) SetActive(true);
+        if(props.page === curPage) SetActive(true);
         else SetActive(false);
     }, [curPage]);
 

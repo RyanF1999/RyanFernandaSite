@@ -13,7 +13,7 @@ function ContentContainer(props){
     
     return(
         <Container maxWidth="xl" className={style.root}>
-            <Box py={4}>
+            <Box py={5}>
                 {
                     props.children
                 }

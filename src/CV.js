@@ -59,17 +59,17 @@ function CV(){
                             </CVSideContainer>
                         </Grid>
                     </Grid>
-                    <CVMainContainer title="Test" index={0}>
+                    <CVMainContainer title="Test" index={0} color='#53575C'>
                         <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                         <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                         <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                     </CVMainContainer>
-                    <CVMainContainer title="Test" index={1}>
+                    <CVMainContainer title="Test" index={1} color='#E4E2CD'>
                         <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                         <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                         <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                     </CVMainContainer>
-                    <CVMainSkillContainer title="Test" index={2}>
+                    <CVMainSkillContainer title="Test" index={2} color='#E7A82C'>
                         <CVMainSkillList title="Title" cur={1} max={5}/>
                         <CVMainSkillList title="Title" cur={3} max={5}/>
                         <CVMainSkillList title="Title" cur={5} max={5}/>

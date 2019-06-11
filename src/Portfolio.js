@@ -1,19 +1,16 @@
-import React, {lazy} from 'react';
+import React from 'react';
 import PortfolioList from './components/PortfolioList';
 import {Grid} from '@material-ui/core';
-
-const PortfolioPreview = lazy(() => import('./components/PortfolioPreview'));
 
 function Portfolio(){
     return (
         <React.Fragment>
-            <PortfolioPreview />
-            <Grid container spacing={5}>
-                <PortfolioList/>
-                <PortfolioList/>
-                <PortfolioList/>
-                <PortfolioList/>
-                <PortfolioList/>
+            <Grid container spacing={5} justify="center">
+                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
             </Grid>
         </React.Fragment>
     );

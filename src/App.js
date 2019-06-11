@@ -40,12 +40,12 @@ const AppContent = withRouter(()=>{
 			friction: 170,
 			clamp: true
 		},
-		immediate: (prev == -1) ? true : false,
+		immediate: (prev === -1) ? true : false,
 		native: true
 	});
   
     useEffect(()=>{
-        if(location.pathname == '/'){
+        if(location.pathname === '/'){
             dispatch(SetCurrentPage('PORTFOLIO'));
             SetCur(0);
             SetPrev(1);

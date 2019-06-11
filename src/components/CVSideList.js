@@ -13,7 +13,7 @@ function CvSideContainer(props){
     const style = useStyle();
 
     let arrDesc;
-    if(props.desc.constructor == Array)
+    if(props.desc.constructor === Array)
         arrDesc = props.desc;
     else
         arrDesc = [props.desc];
@@ -35,7 +35,7 @@ function CvSideContainer(props){
         <React.Fragment>
             <Grid item xs={4}>
                 <Box padding={0.5}>
-                    <img className={style.root} src={props.icon}/>
+                    <img className={style.root} src={props.icon} alt={props.alt}/>
                 </Box>
             </Grid>
             <Grid item container xs={8} direction="column">

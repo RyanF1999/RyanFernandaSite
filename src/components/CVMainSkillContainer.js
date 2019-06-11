@@ -1,21 +1,12 @@
 import React from 'react';
-import CvMainDropdownBtn from './CVMainDropdownBtn';
-import {Grid, Typography} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import CvMainChilds from './CVMainChilds';
+import CvMainHeader from './CVMainHeader';
 
 function CvMainSkillContainer(props){
     return (
         <Grid container item direction="row" spacing={3}>
-            <Grid container item alignItems="center" direction="row" spacing={4}>
-                <Grid item xs="auto">
-                    <CvMainDropdownBtn index={props.index}/>
-                </Grid>
-                <Grid>
-                    <Typography variant="h4">
-                        {props.title}
-                    </Typography>
-                </Grid>
-            </Grid>
+            <CvMainHeader {...props}/>
             <CvMainChilds 
                 index={props.index} 
                 duration={550}

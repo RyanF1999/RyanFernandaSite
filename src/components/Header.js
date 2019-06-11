@@ -8,14 +8,14 @@ const useStyle = makeStyles({
         backgroundColor: 'transparent'
     },
     title: {
-        backgroundColor: 'orange',
+        backgroundColor: '#69C4E4',
         paddingTop: 10,
         paddingBottom: 10,
         boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.5)',
         zIndex: 5
     },
     nav: {
-        backgroundColor: 'orange',
+        backgroundColor: '#69C4E4',
         paddingTop: 20,
         paddingBottom: 5,
         boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
