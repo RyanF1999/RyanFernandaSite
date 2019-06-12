@@ -10,6 +10,9 @@ const useStyle = makeStyles({
 });
 
 function CVProfileList(props){
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
+    });
     const style = useStyle();
 
     let arrDesc;
@@ -33,23 +36,34 @@ function CVProfileList(props){
 
     return (
         <React.Fragment>
-            <Grid item xs={4}>
-                <Box padding={0.5}>
-                    <img className={style.root} src={props.icon} alt={props.alt}/>
+            <Box 
+                item xs={4} 
+                py={2}
+                pl={1}
+                pr={0.5}
+                component={GridRoot} 
+            >
+                <img className={style.root} src={props.icon} alt={props.alt}/>
+            </Box>
+            <Box 
+                py={2}
+                pr={1}
+                pl={0.5}
+                item 
+                xs={8}
+                container 
+                direction="column" 
+                component={GridRoot} 
+            >
+                <Box item xs={12} component={GridRoot} marginBottom={1}>
+                    <Typography variant="h4">
+                        {props.title}
+                    </Typography>
                 </Box>
-            </Grid>
-            <Grid item xs={8} container direction="column">
-                <Grid item xs={12}>
-                    <Box marginBottom={1}>
-                        <Typography variant="h4">
-                            {props.title}
-                        </Typography>
-                    </Box>
-                </Grid>
                 <Grid item xs={12}>
                     {descriptions}
                 </Grid>
-            </Grid>
+            </Box>
         </React.Fragment>
     );
 }

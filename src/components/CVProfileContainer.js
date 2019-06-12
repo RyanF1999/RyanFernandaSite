@@ -2,11 +2,8 @@ import React from 'react';
 import {Grid, Typography, Box, List, ListItem} from '@material-ui/core';
 
 function CVProfileContainer(props){
-    const ListRoot = React.forwardRef((props, ref)=>{
-        return <List {...props} innerRef={ref}/>
-    });
-    const ListItemRoot = React.forwardRef((props, ref)=>{
-        return <ListItem {...props} innerRef={ref}/>
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
     });
 
     return (
@@ -18,25 +15,26 @@ function CVProfileContainer(props){
                     </Typography>
                 </Box>
             </Grid>
-            <Grid item container component={ListRoot}>
+            <List item container component={GridRoot}>
                 {
                     React.Children.map(props.children, (child, index)=>{
                         return(
-                            <Grid
-                                component={ListItemRoot}
+                            <ListItem
+                                component={GridRoot}
                                 divider={
                                     index !== props.children.length-1 
                                     && props.children.length > 1 ? true : false
                                 }
                                 item
                                 container
+                                alignItems="flex-start"
                             >
                                 {child}
-                            </Grid>
+                            </ListItem>
                         )
                     })
                 }
-            </Grid>
+            </List>
         </Grid>
     );
 }

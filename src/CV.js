@@ -42,7 +42,7 @@ function CV(){
                                 <img className={style.img} src="https://via.placeholder.com/150"/>
                             </Box>
                         </Grid>
-                        <Grid item container md={12} direction="row" spacing={5}>
+                        <Grid item container md={12} direction="row" spacing={4}>
                             <CVProfileContainer title="Test">
                                 <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
                             </CVProfileContainer>

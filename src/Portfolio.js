@@ -4,15 +4,13 @@ import {Grid} from '@material-ui/core';
 
 function Portfolio(){
     return (
-        <React.Fragment>
-            <Grid container spacing={5} justify="center">
-                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-                <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-            </Grid>
-        </React.Fragment>
+        <Grid container spacing={5} justify="center">
+            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
+        </Grid>
     );
 }
 
