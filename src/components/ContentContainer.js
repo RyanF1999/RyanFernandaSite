@@ -10,15 +10,22 @@ const useStyle = makeStyles({
 
 function ContentContainer(props){
     const style = useStyle();
-    
+    const ContainerRoot = React.forwardRef((props, ref)=>{
+        return <Container {...props} innerRef={ref}/>
+    });
+
     return(
-        <Container maxWidth="xl" className={style.root}>
-            <Box py={5}>
-                {
-                    props.children
-                }
-            </Box>
-        </Container>
+        <Box
+            component={ContainerRoot} 
+            maxWidth="xl"
+            className={style.root}
+            py={5}
+            mt={26}
+        >
+            {
+                props.children
+            }
+        </Box>
     )
 }
 
