@@ -27,7 +27,7 @@ const useStyle = makeStyles({
     }
 });
 
-function CvMainDropdownBtn(props){
+function CVMainDropdownBtn(props){
     const style = useStyle();
     const dispatch = useDispatch();
     const _showChild = useSelector(state => state.cvlist.get(props.index));
@@ -69,4 +69,4 @@ function CvMainDropdownBtn(props){
     );
 }
 
-export default CvMainDropdownBtn;
+export default CVMainDropdownBtn;

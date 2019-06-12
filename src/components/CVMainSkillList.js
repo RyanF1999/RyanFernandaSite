@@ -53,7 +53,7 @@ function Progress(props){
 }
 
 // have props: cur. max, index
-function CvMainSkillList(props){    
+function CVMainSkillList(props){    
     const style = useStyle();
 
     return (
@@ -74,4 +74,4 @@ function CvMainSkillList(props){
     );
 }
 
-export default CvMainSkillList;
+export default CVMainSkillList;

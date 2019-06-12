@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {Grid} from '@material-ui/core';
 
 // need props: duration, container, alignment
-function CvMainChilds(props){
+function CVMainSkillAnim(props){
     const delay = useMemo(
         ()=> props.duration * props.children.length * 0.18, [
             props.children.length, props.duration
@@ -66,4 +66,4 @@ function CvMainChilds(props){
     }
 }
 
-export default CvMainChilds;
+export default CVMainSkillAnim;

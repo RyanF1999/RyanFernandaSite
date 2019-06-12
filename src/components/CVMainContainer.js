@@ -1,23 +1,23 @@
 import React from 'react';
 import {Grid, List} from '@material-ui/core';
-import CvMainListChilds from './CVMainListChilds';
-import CvMainHeader from './CVMainHeader';
+import CVMainListAnim from './CVMainListAnim';
+import CVMainHeader from './CVMainHeader';
 
-function CvMainContainer(props){
+function CVMainContainer(props){
     return (
         <Grid container item direction="column" spacing={5}>
-            <CvMainHeader {...props}/>
+            <CVMainHeader {...props}/>
             <List>
-                <CvMainListChilds 
+                <CVMainListAnim 
                     index={props.index} 
                     duration={650}
                     container
                 >
                     {props.children}
-                </CvMainListChilds>
+                </CVMainListAnim>
             </List>
         </Grid>
     );
 }
 
-export default CvMainContainer;
+export default CVMainContainer;

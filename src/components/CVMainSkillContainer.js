@@ -1,13 +1,13 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import CvMainChilds from './CVMainChilds';
-import CvMainHeader from './CVMainHeader';
+import CVMainSkillAnim from './CVMainSkillAnim';
+import CVMainHeader from './CVMainHeader';
 
-function CvMainSkillContainer(props){
+function CVMainSkillContainer(props){
     return (
         <Grid container item direction="row" spacing={3}>
-            <CvMainHeader {...props}/>
-            <CvMainChilds 
+            <CVMainHeader {...props}/>
+            <CVMainSkillAnim 
                 index={props.index} 
                 duration={550}
                 container
@@ -20,9 +20,9 @@ function CvMainSkillContainer(props){
                         return React.cloneElement(child, {index: props.index});
                     })
                 }
-            </CvMainChilds>
+            </CVMainSkillAnim>
         </Grid>
     );
 }
 
-export default CvMainSkillContainer;
+export default CVMainSkillContainer;

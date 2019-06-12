@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import {Grid, ListItem, Divider} from '@material-ui/core';
 
 // need props: duration, container, alignment
-function CvMainListChilds(props){
+function CVMainListAnim(props){
     const delay = useMemo(
         ()=> props.duration * props.children.length * 0.18, [
             props.children.length, props.duration
@@ -48,38 +48,21 @@ function CvMainListChilds(props){
                 {
                     trail.map((style, index)=>{
                         // return version with divider if not last list
-                        if(index !== props.children.length-1){
-                            return(
-                                <React.Fragment>
-                                    <ListItem 
-                                        component={animated.li}
-                                        key={index} 
-                                        style={style}
-                                    >
-                                        <Grid {...props} item>
-                                            {props.children[index]}
-                                        </Grid>
-                                    </ListItem>
-                                    <Divider 
-                                        component={animated.hr}
-                                        key={index+10000} 
-                                        style={style}
-                                    />
-                                </React.Fragment>
-                            )
-                        }else{
-                            return(
-                                <ListItem 
-                                    component={animated.li}
-                                    key={index} 
-                                    style={style}
-                                >
-                                    <Grid {...props} item>
-                                        {props.children[index]}
-                                    </Grid>
-                                </ListItem>
-                            )
-                        }
+                        return(
+                            <ListItem 
+                                divider={
+                                    index !== props.children.length-1 
+                                    && props.children.length > 1 ? true : false
+                                }
+                                component={animated.li}
+                                key={index} 
+                                style={style}
+                            >
+                                <Grid {...props} item>
+                                    {props.children[index]}
+                                </Grid>
+                            </ListItem>
+                        )
                     })
                 }
             </React.Fragment>
@@ -90,4 +73,4 @@ function CvMainListChilds(props){
     }
 }
 
-export default CvMainListChilds;
+export default CVMainListAnim;

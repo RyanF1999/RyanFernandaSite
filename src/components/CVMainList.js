@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Typography, Box} from '@material-ui/core';
 
-function CvMainList(props){
+function CVMainList(props){
     const Desc = ()=>{
         if(props.desc != undefined || props.desc != ''){
             return(
@@ -47,4 +47,4 @@ function CvMainList(props){
     );
 }
 
-export default CvMainList;
+export default CVMainList;

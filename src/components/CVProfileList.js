@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Typography, Box} from '@material-ui/core';
+import {Grid, Typography, Box, ListItem, ListItemAvatar, ListItemText} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyle = makeStyles({
@@ -9,7 +9,7 @@ const useStyle = makeStyles({
     }
 });
 
-function CvSideContainer(props){
+function CVProfileList(props){
     const style = useStyle();
 
     let arrDesc;
@@ -38,18 +38,20 @@ function CvSideContainer(props){
                     <img className={style.root} src={props.icon} alt={props.alt}/>
                 </Box>
             </Grid>
-            <Grid item container xs={8} direction="column">
-                <Box padding={1}>
+            <Grid item xs={8} container direction="column">
+                <Grid item xs={12}>
                     <Box marginBottom={1}>
                         <Typography variant="h4">
                             {props.title}
                         </Typography>
                     </Box>
+                </Grid>
+                <Grid item xs={12}>
                     {descriptions}
-                </Box>
+                </Grid>
             </Grid>
         </React.Fragment>
     );
 }
 
-export default CvSideContainer;
+export default CVProfileList;

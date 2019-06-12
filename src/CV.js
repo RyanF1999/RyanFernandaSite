@@ -1,6 +1,6 @@
 import React from 'react';
-import CVSideContainer from './components/CVSideContainer';
-import CVSideList from './components/CVSideList';
+import CVProfileContainer from './components/CVProfileContainer';
+import CVProfileList from './components/CVProfileList';
 import CVMainContainer from './components/CVMainContainer';
 import CVMainList from './components/CVMainList';
 import CVMainSkillContainer from './components/CVMainSkillContainer';
@@ -43,20 +43,20 @@ function CV(){
                             </Box>
                         </Grid>
                         <Grid item container md={12} direction="row" spacing={5}>
-                            <CVSideContainer title="Test">
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                            </CVSideContainer>
-                            <CVSideContainer title="Test">
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                            </CVSideContainer>
-                            <CVSideContainer title="Test">
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                            </CVSideContainer>
-                            <CVSideContainer title="Test">
-                                <CVSideList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                            </CVSideContainer>
+                            <CVProfileContainer title="Test">
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                            </CVProfileContainer>
+                            <CVProfileContainer title="Test">
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                            </CVProfileContainer>
+                            <CVProfileContainer title="Test">
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                            </CVProfileContainer>
+                            <CVProfileContainer title="Test">
+                                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+                            </CVProfileContainer>
                         </Grid>
                     </Grid>
                     <CVMainContainer title="Test" index={0} color='#53575C'>
