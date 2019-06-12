@@ -1,19 +1,29 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {SetCurrentPage} from '../actions/actions';
 import {useSpring, animated, config} from 'react-spring';
 import {Grid, Typography} from '@material-ui/core';
 
-function AnimatedLink(props){
+const AnimLink = animated(Link);
+
+function AnimatedLink(props){    
     const dispatch = useDispatch();
     const curPage = useSelector(state => state.page);
     const [active, SetActive] = useState(props.page === curPage ? true : false);
     const [hover, SetHover] = useState(false);
+    const mounted = useRef(false);
+    
+    useEffect(()=>{
+        mounted.current = true;
+        return () => mounted.current = false;
+    }, []);
 
     useEffect(()=>{
-        if(props.page === curPage) SetActive(true);
-        else SetActive(false);
+        if(mounted){
+            if(props.page === curPage) SetActive(true);
+            else SetActive(false);
+        }
     }, [curPage]);
 
     const linkAnim = useSpring({
@@ -31,27 +41,33 @@ function AnimatedLink(props){
     });
 
     return(
-        <Typography
-            component={animated.h5}
-            align="center"
-            display="inline"
-            variant="h5"
+        <AnimLink
+            to={props.to}
+            innerRef={props.innerRef}
             style={linkAnim}
             onClick={() => dispatch(SetCurrentPage(props.page))} 
             onMouseEnter={() => SetHover(true)} 
             onMouseLeave={() => SetHover(false)}
         >
             {props.content}
-        </Typography>
+        </AnimLink>
     );
 }
 
 function NavigationLink(props){
+    const AnimLinkRoot = React.forwardRef((props, ref)=>{
+        return <AnimatedLink {...props} innerRef={ref}/>
+    });
+
     return(
         <Grid item container xs={5} sm={4} justify="center">
-            <Link to={props.linkTo} style={{textDecoration: 'none'}}>
-                <AnimatedLink content={props.content} page={props.page}/>
-            </Link>
+            <Typography
+                component={AnimLinkRoot}
+                {...props}
+                align="center"
+                display="inline"
+                variant="h5"
+            />
         </Grid>
     )
 }
