@@ -1,5 +1,6 @@
 import React from 'react';
-import {Grid, Typography, Box, ListItem, ListItemAvatar, ListItemText} from '@material-ui/core';
+import GridRoot from './GridRoot';
+import {Grid, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyle = makeStyles({
@@ -10,9 +11,6 @@ const useStyle = makeStyles({
 });
 
 function CVProfileList(props){
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
     const style = useStyle();
 
     let arrDesc;

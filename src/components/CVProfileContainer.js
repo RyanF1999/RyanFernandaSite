@@ -1,11 +1,8 @@
 import React from 'react';
+import GridRoot from './GridRoot';
 import {Grid, Typography, Box, List, ListItem} from '@material-ui/core';
 
 function CVProfileContainer(props){
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
-
     return (
         <Grid container item xs={12} md={6} direction="column">
             <Box component={GridRoot} item fontWeight="fontWeightBold" 

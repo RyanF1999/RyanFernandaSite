@@ -1,26 +1,15 @@
 import React from 'react';
-import {Grid} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
-
-const useStyle = makeStyles({
-    root: {
-        paddingTop: 50,
-        paddingBottom: 50
-    }
-});
+import {Box} from '@material-ui/core';
+import GridRoot from './GridRoot';
 
 function CVProfile(props){
-    const style = useStyle();
 
     return(
-        <Grid 
-            container 
-            className={style.root} 
-            direction="column"
-            alignItems="center"
+        <Box component={GridRoot} ref={ref} container py={5}
+            direction="column" alignItems="center"
         >
             {props.children}
-        </Grid>
+        </Box>
     )
 }
 

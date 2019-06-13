@@ -1,16 +1,14 @@
 import React from 'react';
-import {Grid, Box} from '@material-ui/core';
+import GridRoot from './GridRoot';
+import {Box} from '@material-ui/core';
 import CVMainSkillAnim from './CVMainSkillAnim';
 import CVMainHeader from './CVMainHeader';
 
 function CVMainSkillContainer(props){
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
 
 
     return (
-        <Box component={GridRoot} py={2} container item direction="row">
+        <Box ref={ref} component={GridRoot} py={2} container item direction="row">
             <CVMainHeader {...props}/>
             <CVMainSkillAnim 
                 index={props.index} 

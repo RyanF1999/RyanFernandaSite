@@ -1,5 +1,6 @@
 import React from 'react';
-import {Grid, Box, Typography} from '@material-ui/core';
+import GridRoot from './GridRoot';
+import {Box, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
 const useStyle = makeStyles({
@@ -13,10 +14,6 @@ const useStyle = makeStyles({
 
 function CVProfileHeader(props){
     const style = useStyle();
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
-
     return(
         <Box component={GridRoot} item container
             xs direction="row" justifyContent="center"

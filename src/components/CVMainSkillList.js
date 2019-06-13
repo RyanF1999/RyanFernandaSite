@@ -1,8 +1,8 @@
 import React, {useMemo, useState, useEffect} from 'react';
 import {animated, useSpring} from 'react-spring';
 import {useSelector} from 'react-redux';
+import GridRoot from './GridRoot';
 import {Grid, Typography, Box} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
 
 function Progress(props){
     const width = useMemo(
@@ -43,10 +43,6 @@ function Progress(props){
 
 // have props: cur. max, index
 function CVMainSkillList(props){
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
-
     return (
         <React.Fragment>
             <Box component={GridRoot} item pt={2} px={1} xs={12} fontWeight="fontWeightBold">

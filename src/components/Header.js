@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import GridRoot from './GridRoot';
 import {Grid, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import NavigationLink from './NavigationLink';
@@ -26,10 +27,6 @@ const useStyle = makeStyles({
 })
 
 function Header(){
-    const GridRoot = React.forwardRef((props, ref)=>{
-        return <Grid {...props} innerRef={ref}/>
-    });
-
     const style = useStyle();
     const [init, SetInit] = useState(false);
     const [isSticky, SetSticky] = useState(true);
