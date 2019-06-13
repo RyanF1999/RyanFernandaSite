@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import GridRoot from './GridRoot';
 import {Box} from '@material-ui/core';
 import CVMainSkillAnim from './CVMainSkillAnim';
 import CVMainHeader from './CVMainHeader';
+import {useDispatch} from 'react-redux';
+import { InitPageMark } from '../actions/actions';
 
 function CVMainSkillContainer(props){
+    const dispatch = useDispatch();
+    const ref = useRef();
 
+    useEffect(()=>{
+        dispatch(InitPageMark(props.title, ref));
+    }, []);
 
     return (
         <Box ref={ref} component={GridRoot} py={2} container item direction="row">

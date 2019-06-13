@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import { SET_CURRENT_PAGE, SHOW_CV_LIST, HIDE_CV_LIST } from '../actions/actions';
+import { SET_CURRENT_PAGE, SHOW_CV_LIST, HIDE_CV_LIST, INIT_PAGE_MARK, SET_CURRENT_PAGE_MARK} from '../actions/actions';
 
 function currentPage(state = '', action){
     switch(action.type){
@@ -27,10 +27,38 @@ function setCvList(state = new Map(), action){
     return tempstate;
 }
 
+function initPageMark(state = new Map(), action){
+    let tempstate = state;
+    switch(action.type){
+        case INIT_PAGE_MARK:
+            tempstate.set(action.title, action.ref);    
+        break;
+        default:
+        break;
+    }
+    return tempstate;
+}
+
+function setCurrentPageMark(state = {}, action){
+    switch(action.type){
+        case SET_CURRENT_PAGE_MARK:
+            state = {
+                title: action.title, 
+                moving: action.moving
+            };
+        break;
+        default:
+        break;
+    }
+    return state;
+}
+
 const reducers = combineReducers(
     {
         page: currentPage,
-        cvlist: setCvList
+        cvlist: setCvList,
+        pagemark: initPageMark,
+        curpagemark: setCurrentPageMark
     }
 );
 

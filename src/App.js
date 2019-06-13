@@ -1,16 +1,16 @@
 import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
 import {useDispatch} from 'react-redux';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import {Route, withRouter, Switch, __RouterContext} from 'react-router-dom';
-import {CssBaseline} from '@material-ui/core';
-import ContentContainer from './components/ContentContainer';
-
 import {SetCurrentPage} from './actions/actions';
 import {useTransition, animated} from 'react-spring';
 
+const Header = lazy(()=>import('./components/Header'));
+const Footer = lazy(()=>import('./components/Footer'));
+const CssBaseline = lazy(()=>import('@material-ui/core/CssBaseline'));
+const ContentContainer = lazy(()=>import('./components/ContentContainer'));
 const Portfolio = lazy(() => import('./Portfolio'));
 const CV = lazy(() => import('./CV'));
+const CVScrollMarkWrapper = lazy(() => import('./components/CVScrollMarkWrapper'));
 
 const AppContent = withRouter(()=>{
 	const dispatch = useDispatch();
@@ -54,11 +54,6 @@ const AppContent = withRouter(()=>{
             SetCur(1);
             SetPrev(0);
         }
-
-        return ()=>{
-            console.log({cur, prev});
-            console.log(location);
-        }
 	}, [location.pathname]);
 
     return (
@@ -80,13 +75,14 @@ const AppContent = withRouter(()=>{
 			}
 		</React.Fragment>
     );
-})
+});
 
 function App(){
     return (
-		<React.Fragment>
+		<Suspense fallback={<div></div>}>
 			<CssBaseline/>
 			<Header/>
+			<CVScrollMarkWrapper/>
 			
 			<ContentContainer>
 				<Suspense fallback={<div>lel</div>}>	
@@ -95,7 +91,7 @@ function App(){
 			</ContentContainer>
 			
 			<Footer/>
-		</React.Fragment>
+		</Suspense>
     );
 }
 
