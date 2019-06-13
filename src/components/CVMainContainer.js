@@ -1,11 +1,15 @@
 import React from 'react';
-import {Grid, List} from '@material-ui/core';
+import {Grid, List, Box} from '@material-ui/core';
 import CVMainListAnim from './CVMainListAnim';
 import CVMainHeader from './CVMainHeader';
 
 function CVMainContainer(props){
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
+    });
+
     return (
-        <Grid container item direction="column" spacing={5}>
+        <Box component={GridRoot} py={2} container item direction="column">
             <CVMainHeader {...props}/>
             <List>
                 <CVMainListAnim 
@@ -16,7 +20,7 @@ function CVMainContainer(props){
                     {props.children}
                 </CVMainListAnim>
             </List>
-        </Grid>
+        </Box>
     );
 }
 

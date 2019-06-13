@@ -7,14 +7,14 @@ function CVProfileContainer(props){
     });
 
     return (
-        <Grid container item xs={12} md={6} spacing={1} direction="column">
-            <Grid item>
-                <Box fontWeight="fontWeightBold" textAlign="center">
-                    <Typography variant="h3">
-                        {props.title}
-                    </Typography>
-                </Box>
-            </Grid>
+        <Grid container item xs={12} md={6} direction="column">
+            <Box component={GridRoot} item fontWeight="fontWeightBold" 
+                textAlign="center"
+            >
+                <Typography variant="h4">
+                    {props.title}
+                </Typography>
+            </Box>
             <List item container component={GridRoot}>
                 {
                     React.Children.map(props.children, (child, index)=>{

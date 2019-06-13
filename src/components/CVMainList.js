@@ -7,7 +7,7 @@ function CVMainList(props){
             return(
                 <Grid item xs={12}>
                     <Box paddingLeft={2} textAlign="left">
-                        <Typography>        
+                        <Typography variant="body2">        
                             {props.desc}
                         </Typography>
                     </Box>
@@ -30,14 +30,14 @@ function CVMainList(props){
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant="h6">
+                    <Typography variant="body1">
                         {props.subtitle}
                     </Typography>
                 </Grid>
             </Grid>
             <Grid container item xs alignItems="center" justify="flex-end">
                 <Box fontStyle="italic" fontWeight="fontWeightLight">
-                    <Typography variant="h6">
+                    <Typography variant="body1">
                         {props.time}    
                     </Typography>
                 </Box>

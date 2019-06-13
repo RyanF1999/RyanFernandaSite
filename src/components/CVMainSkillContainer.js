@@ -1,19 +1,24 @@
 import React from 'react';
-import {Grid} from '@material-ui/core';
+import {Grid, Box} from '@material-ui/core';
 import CVMainSkillAnim from './CVMainSkillAnim';
 import CVMainHeader from './CVMainHeader';
 
 function CVMainSkillContainer(props){
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
+    });
+
+
     return (
-        <Grid container item direction="row" spacing={3}>
+        <Box component={GridRoot} py={2} container item direction="row">
             <CVMainHeader {...props}/>
             <CVMainSkillAnim 
                 index={props.index} 
                 duration={550}
                 container
-                xs={6}
+                xs={12}
+                sm={6}
                 md={4}
-                spacing={1}
             >
                 {
                     React.Children.map(props.children, (child)=>{
@@ -21,7 +26,7 @@ function CVMainSkillContainer(props){
                     })
                 }
             </CVMainSkillAnim>
-        </Grid>
+        </Box>
     );
 }
 

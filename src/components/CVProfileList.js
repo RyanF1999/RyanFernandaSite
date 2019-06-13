@@ -26,7 +26,7 @@ function CVProfileList(props){
             index++;
             return(
                 <Box marginBottom={2}>
-                    <Typography key={index} variant="h5">
+                    <Typography key={index} variant="body1">
                         {desc}
                     </Typography>
                 </Box>
@@ -36,27 +36,14 @@ function CVProfileList(props){
 
     return (
         <React.Fragment>
-            <Box 
-                item xs={4} 
-                py={2}
-                pl={1}
-                pr={0.5}
-                component={GridRoot} 
-            >
+            <Box item xs={4} px={0.5} component={GridRoot}>
                 <img className={style.root} src={props.icon} alt={props.alt}/>
             </Box>
-            <Box 
-                py={2}
-                pr={1}
-                pl={0.5}
-                item 
-                xs={8}
-                container 
-                direction="column" 
-                component={GridRoot} 
+            <Box px={0.5} item xs={8}
+                container direction="column" component={GridRoot} 
             >
                 <Box item xs={12} component={GridRoot} marginBottom={1}>
-                    <Typography variant="h4">
+                    <Typography variant="h5">
                         {props.title}
                     </Typography>
                 </Box>

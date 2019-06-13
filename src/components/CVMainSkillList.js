@@ -4,19 +4,6 @@ import {useSelector} from 'react-redux';
 import {Grid, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 
-const useStyle = makeStyles({
-    root:{
-        width: '100%',
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: '#d6d6d6'
-    },
-    progress:{
-        height: '100%',
-        borderRadius: 15
-    }
-});
-
 function Progress(props){
     const width = useMemo(
         ()=>props.cur/props.max * 100, [props.cur, props.max]
@@ -48,28 +35,30 @@ function Progress(props){
     });
 
     return(
-        <animated.div className={props.className} style={progressAnim}/>
+        <Box component={animated.div} style={progressAnim} 
+            borderRadius={15} height='100%'
+        />
     );
 }
 
 // have props: cur. max, index
-function CVMainSkillList(props){    
-    const style = useStyle();
+function CVMainSkillList(props){
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
+    });
 
     return (
         <React.Fragment>
-            <Grid item xs={12}>
-                <Box fontWeight="fontWeightBold">
-                    <Typography variant="h5">
-                        {props.title}
-                    </Typography>
+            <Box component={GridRoot} item pt={2} px={1} xs={12} fontWeight="fontWeightBold">
+                <Typography variant="h5">
+                    {props.title}
+                </Typography>
+            </Box>
+            <Box component={GridRoot} item xs={12} px={1}>
+                <Box height={30} borderRadius={15} bgcolor='#d6d6d6'>
+                    <Progress {...props}/>
                 </Box>
-            </Grid>
-            <Grid item xs={12}>
-                <div className={style.root}>
-                    <Progress {...props} className={style.progress}/>
-                </div>
-            </Grid>
+            </Box>
         </React.Fragment>
     );
 }
