@@ -8,10 +8,10 @@ const useStyle = makeStyles({
         backgroundColor: '#F2F3F3',
         width: '100%',
         paddingLeft: 15,
-        paddingRight: 15,
+        paddingRight: 15
     },
     img: {
-        height: 300
+        height: 250
     },
     title: {
         textAlign: 'center'

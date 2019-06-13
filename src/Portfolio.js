@@ -7,9 +7,6 @@ function Portfolio(){
         <Grid container spacing={4} justify="center">
             <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
             <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
-            <PortfolioList title='title' image='https://via.placeholder.com/350x150.jpg' desc='desc'/>
         </Grid>
     );
 }
