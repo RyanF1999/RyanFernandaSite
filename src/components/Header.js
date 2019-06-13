@@ -28,19 +28,18 @@ const useStyle = makeStyles({
 
 function Header(){
     const style = useStyle();
-    const [init, SetInit] = useState(false);
     const [isSticky, SetSticky] = useState(true);
     const triggerRef = useRef();
-    const _isSticky = useRef(isSticky);
 
     // will make navigation into fixed after stuck in top
-    const navsticky = new IntersectionObserver(()=>{
-        if(init){
-            SetInit(false);
-        }else{
-            _isSticky.current = !_isSticky.current;
-            SetSticky(_isSticky.current);
-        }
+    const navsticky = new IntersectionObserver((entries)=>{
+        entries.forEach(entry =>{
+            if(entry.isIntersecting){
+                SetSticky(false);
+            }else{
+                SetSticky(true);
+            }
+        })
     }, {threshold: 0});
 
     useEffect(()=>{
