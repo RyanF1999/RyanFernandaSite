@@ -28,12 +28,8 @@ function AnimatedLink(props){
 
     const linkAnim = useSpring({
         config: config.gentle,
-        from: {
-            fontSize: '135%',
-            color: 'white'
-        },
         to: {
-            fontSize: active ? '165%' : '135%',
+            transform: active ? 'scale(1.35)' : 'scale(1.1)',
             color: (active || hover) ?'blue' : 'white',
             textDecoration: (active) ? 'underline' : (hover) ? 'none' : 'none'
         },
@@ -66,7 +62,6 @@ function NavigationLink(props){
                 {...props}
                 align="center"
                 display="inline"
-                variant="h5"
             />
         </Grid>
     )

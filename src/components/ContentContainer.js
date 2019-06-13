@@ -20,7 +20,7 @@ function ContentContainer(props){
             maxWidth="xl"
             className={style.root}
             py={5}
-            mt={26}
+            mt={18}
         >
             {
                 props.children

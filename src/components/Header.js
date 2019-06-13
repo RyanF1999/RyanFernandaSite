@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Grid, Typography} from '@material-ui/core';
+import {Grid, Typography, Box} from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import NavigationLink from './NavigationLink';
 
@@ -9,32 +9,27 @@ const useStyle = makeStyles({
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 10
-    },
-    title: {
+        zIndex: 10,
         backgroundColor: '#69C4E4',
-        paddingTop: 10,
-        paddingBottom: 10
     },
     nav: {
-        backgroundColor: '#69C4E4',
-        paddingTop: 20,
-        paddingBottom: 5,
         boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
         zIndex: 10
     },
     navsticky: {
         backgroundColor: '#69C4E4',
-        paddingTop: 20,
-        paddingBottom: 5,
         boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
-        zIndex: 3,
+        zIndex: 10,
         position: 'fixed',
         top: 0
     }
 })
 
 function Header(){
+    const GridRoot = React.forwardRef((props, ref)=>{
+        return <Grid {...props} innerRef={ref}/>
+    });
+
     const style = useStyle();
     const [init, SetInit] = useState(false);
     const [isSticky, SetSticky] = useState(true);
@@ -57,35 +52,29 @@ function Header(){
     }, []);
 
     return(
-        <header className={style.root}>
-            <Grid 
-                ref={triggerRef}
-                container
-                justify="center"
-                spacing={2}
-                className={style.title}
-            >
-                <Grid item xs={12}>
-                    <Typography variant="h3" align="center">
-                        Ryan Fernanda
-                    </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography variant="h4" align="center">
-                        IT Developer
-                    </Typography>
-                </Grid>
+        <Grid component="header" container className={style.root} justify="center">
+            <Box component={GridRoot} item xs={12} pt={1} pb={0.25}>
+                <Typography variant="h4" align="center">
+                    Ryan Fernanda
+                </Typography>
+            </Box>
+            <Grid item xs={12} ref={triggerRef}>
+                <Typography variant="h5" align="center">
+                    IT Developer
+                </Typography>
             </Grid>
-            <Grid 
+            <Box
+                py={1}
+                component={GridRoot}
+                item
                 container
                 justify="center"
-                spacing={2}
                 className={isSticky ? style.navsticky : style.nav}
             >
                 <NavigationLink to="/" content="Portfolio" page='PORTFOLIO'/>
                 <NavigationLink to="/cv" content="CV" page='CV'/>
-            </Grid>
-        </header>
+            </Box>
+        </Grid>
     );
 }
 
