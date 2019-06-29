@@ -4,45 +4,52 @@ import {animated} from 'react-spring';
 import {useSelector} from 'react-redux';
 import CVScrollButton from './CVScrollButton';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
     root:{
         position: "fixed",
         top: 0,
         bottom: 0,
-        left: '75%',
         right: 0,
         zIndex: 5,
+        [theme.breakpoints.only('md')]:{
+            left: '75%'
+        },
+        [theme.breakpoints.only('lg')]:{
+            left: '83%'
+        },
+        [theme.breakpoints.only('xl')]:{
+            left: '91%'
+        }
     }
-});
+}));
 
 // will receive array of data consist of: ref and title
 // data: {title: string, ref: ref}
 function CVScrollMark(props){
     const style = useStyle();
-    const [prevSize, SetPrev] = useState(-1);
-    const data = useSelector(state => state.pagemark, ()=>{
-        SetPrev(data.size);
-    });
+    const data = useSelector(state => state.pagemark, ()=>false);
 
-    const [marks, SetMarks] = useState([]);
-
-    useEffect(()=>{
-        let tempmarks = [];
-        data.forEach((value, key)=>{
-            console.log(value);
-            tempmarks.push(<CVScrollButton content={key} key={key} markRef={value}/>);
-        })
-        SetMarks(tempmarks);
-    }, [prevSize]);
+    let marks = [];
+    for(const [key, value] of Object.entries(data)){
+        marks.push({
+            content: key,
+            key: key,
+            markRef: value
+        });
+    }
 
     return(
         <Box component={animated.div} {...props} className={style.root}
-            pl={4} display='flex' alignItems='center'
+            pl={2} display='flex' alignItems='center'
         >
             <Box component={Grid} container direction="row" 
                 bgcolor="#69C4E4" boxShadow={4}
             >
-                {marks}
+                {
+                    marks.map((value)=>{
+                        return <CVScrollButton {...value}/>
+                    })
+                }
             </Box>
         </Box>
     )

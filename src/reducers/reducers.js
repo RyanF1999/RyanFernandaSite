@@ -27,11 +27,11 @@ function setCvList(state = new Map(), action){
     return tempstate;
 }
 
-function initPageMark(state = new Map(), action){
+function initPageMark(state = {}, action){
     let tempstate = state;
     switch(action.type){
         case INIT_PAGE_MARK:
-            tempstate.set(action.title, action.ref);    
+            tempstate[action.title] = action.ref;
         break;
         default:
         break;
