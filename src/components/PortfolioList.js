@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useSpring, animated, config} from 'react-spring';
-import {Grid, Card, CardContent, CardHeader, CardMedia, Typography, Box} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
+import {Grid, Card, CardContent, CardHeader, CardMedia, Typography, Box, makeStyles} from '@material-ui/core';
 
 const useStyle = makeStyles({
     root: {

@@ -1,7 +1,6 @@
 import React, {useMemo, useState, useEffect} from 'react';
 import {animated, useSpring} from 'react-spring';
 import {useSelector} from 'react-redux';
-import GridRoot from './GridRoot';
 import {Grid, Typography, Box} from '@material-ui/core';
 
 function Progress(props){
@@ -45,12 +44,12 @@ function Progress(props){
 function CVMainSkillList(props){
     return (
         <React.Fragment>
-            <Box component={GridRoot} item pt={2} px={1} xs={12} fontWeight="fontWeightBold">
+            <Box component={Grid} item pt={2} px={1} xs={12} fontWeight="fontWeightBold">
                 <Typography variant="h5">
                     {props.title}
                 </Typography>
             </Box>
-            <Box component={GridRoot} item xs={12} px={1}>
+            <Box component={Grid} item xs={12} px={1}>
                 <Box height={30} borderRadius={15} bgcolor='#d6d6d6'>
                     <Progress {...props}/>
                 </Box>

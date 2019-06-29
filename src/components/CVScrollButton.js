@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import ReactDOM from 'react-dom';
-import GridRoot from './GridRoot';
-import { Box, ButtonBase} from '@material-ui/core';
+import { Box, ButtonBase, Grid} from '@material-ui/core';
 import {animated, useSpring} from 'react-spring';
 import {useSelector, useDispatch} from 'react-redux';
 import {SetCurrentPageMark} from '../actions/actions';
@@ -67,7 +66,7 @@ function CVScrollButton(props){
     });
 
     return(
-        <Box component={GridRoot} item xs={12} height={75}>
+        <Box component={Grid} item xs={12} height={75}>
             <Box component={ButtonRoot} height="100%" width="100%"
                 centerRipple borderColor='#0d64c6'
                 style={anim}

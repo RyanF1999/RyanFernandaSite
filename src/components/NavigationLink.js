@@ -7,7 +7,7 @@ import {Grid, Typography} from '@material-ui/core';
 
 const AnimLink = animated(Link);
 
-function AnimatedLink(props){    
+const AnimatedLink = React.forwardRef((props, ref)=>{
     const dispatch = useDispatch();
     const curPage = useSelector(state => state.page);
     const [active, SetActive] = useState(props.page === curPage ? true : false);
@@ -39,7 +39,7 @@ function AnimatedLink(props){
     return(
         <AnimLink
             to={props.to}
-            innerRef={props.innerRef}
+            innerRef={ref}
             style={linkAnim}
             onClick={() => dispatch(SetCurrentPage(props.page))} 
             onMouseEnter={() => SetHover(true)} 
@@ -48,17 +48,13 @@ function AnimatedLink(props){
             {props.content}
         </AnimLink>
     );
-}
+});
 
 function NavigationLink(props){
-    const AnimLinkRoot = React.forwardRef((props, ref)=>{
-        return <AnimatedLink {...props} innerRef={ref}/>
-    });
-
     return(
         <Grid item container xs={5} sm={4} justify="center">
             <Typography
-                component={AnimLinkRoot}
+                component={AnimatedLink}
                 {...props}
                 align="center"
                 display="inline"

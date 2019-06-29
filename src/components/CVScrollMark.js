@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import GridRoot from './GridRoot';
-import { Box } from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
+import { Box, Grid, makeStyles } from '@material-ui/core';
 import {animated} from 'react-spring';
 import {useSelector} from 'react-redux';
 import CVScrollButton from './CVScrollButton';
@@ -41,7 +39,7 @@ function CVScrollMark(props){
         <Box component={animated.div} {...props} className={style.root}
             pl={4} display='flex' alignItems='center'
         >
-            <Box component={GridRoot} container direction="row" 
+            <Box component={Grid} container direction="row" 
                 bgcolor="#69C4E4" boxShadow={4}
             >
                 {marks}

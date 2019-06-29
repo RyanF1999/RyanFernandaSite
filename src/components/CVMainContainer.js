@@ -1,6 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import GridRoot from './GridRoot';
-import {List, Box} from '@material-ui/core';
+import {List, Box, Grid} from '@material-ui/core';
 import CVMainListAnim from './CVMainListAnim';
 import CVMainHeader from './CVMainHeader';
 import {useDispatch} from 'react-redux';
@@ -15,7 +14,7 @@ function CVMainContainer(props){
     }, []);
 
     return (
-        <Box ref={ref} component={GridRoot} py={2} container item direction="column">
+        <Box ref={ref} component={Grid} py={2} container item direction="column">
             <CVMainHeader {...props}/>
             <List>
                 <CVMainListAnim 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {animated, useSpring} from 'react-spring';
 import {useSelector, useDispatch} from 'react-redux';
 import { ShowCvList, HideCvList } from '../actions/actions';
-import {makeStyles} from '@material-ui/styles';
+import {makeStyles} from '@material-ui/core';
 
 const btndown = "M19.693,0.456l2.857,0l-11.27,17.328l-11.27,-17.328l2.857,0l8.413,12.934l8.413,-12.934Z";
 const btnup = "M2.867,17.544l-2.857,0l11.27,-17.328l11.27,17.328l-2.857,0l-8.413,-12.934l-8.413,12.934Z";

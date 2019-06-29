@@ -1,7 +1,5 @@
 import React from 'react';
-import GridRoot from './GridRoot';
-import {Grid, Typography, Box} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
+import {Grid, Typography, Box, makeStyles} from '@material-ui/core';
 
 const useStyle = makeStyles({
     root:{
@@ -34,13 +32,13 @@ function CVProfileList(props){
 
     return (
         <React.Fragment>
-            <Box item xs={4} px={0.5} component={GridRoot}>
+            <Box item xs={4} px={0.5} component={Grid}>
                 <img className={style.root} src={props.icon} alt={props.alt}/>
             </Box>
             <Box px={0.5} item xs={8}
-                container direction="column" component={GridRoot} 
+                container direction="column" component={Grid} 
             >
-                <Box item xs={12} component={GridRoot} marginBottom={1}>
+                <Box item xs={12} component={Grid} marginBottom={1}>
                     <Typography variant="h5">
                         {props.title}
                     </Typography>

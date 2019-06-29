@@ -12,7 +12,7 @@ function CVScrollMarkWrapper(){
 	const [transition, SetTransition] = useState(false);
 
 	useEffect(()=>{
-		if(location == CurrentPage.CV) SetActive(true);
+		if(location === CurrentPage.CV) SetActive(true);
 		else SetActive(false);
 
 		SetTransition(setTimeout(()=>SetTransition(undefined), 500));

@@ -1,8 +1,7 @@
 import React, {useEffect, useRef}  from 'react';
-import {Box} from '@material-ui/core';
+import {Box, Grid} from '@material-ui/core';
 import {useDispatch} from 'react-redux';
 import { InitPageMark } from '../actions/actions';
-import GridRoot from './GridRoot';
 
 function CVProfile(props){
     const dispatch = useDispatch();
@@ -13,7 +12,7 @@ function CVProfile(props){
     }, []);
 
     return(
-        <Box component={GridRoot} ref={ref} container py={5}
+        <Box component={Grid} ref={ref} container py={5}
             direction="column" alignItems="center"
         >
             {props.children}

@@ -1,7 +1,6 @@
 import React from 'react';
 import CVMainDropdownBtn from './CVMainDropdownBtn';
-import {Grid, Typography} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
+import {Grid, Typography, makeStyles} from '@material-ui/core';
 
 const useStyle= makeStyles({
     title: {

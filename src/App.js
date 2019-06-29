@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
 import {useDispatch} from 'react-redux';
-import {Route, withRouter, Switch, __RouterContext} from 'react-router-dom';
+import {Route, Switch, __RouterContext} from 'react-router-dom';
 import {SetCurrentPage} from './actions/actions';
 import {useTransition, animated} from 'react-spring';
 
@@ -12,7 +12,7 @@ const Portfolio = lazy(() => import('./Portfolio'));
 const CV = lazy(() => import('./CV'));
 const CVScrollMarkWrapper = lazy(() => import('./components/CVScrollMarkWrapper'));
 
-const AppContent = withRouter(()=>{
+const AppContent = ()=>{
 	const dispatch = useDispatch();
 	const {location} = useContext(__RouterContext);
     const [cur, SetCur] = useState(0);
@@ -61,10 +61,7 @@ const AppContent = withRouter(()=>{
 			{
 				transitions.map(({item, props, key}) => {
 					return(
-						<animated.div 
-							style={props} 
-							key={key}
-						>
+						<animated.div style={props} key={key}>
 							<Switch location={item}>
 								<Route exact path="/" component={Portfolio}/>
 								<Route path="/cv" component={CV}/>
@@ -75,7 +72,7 @@ const AppContent = withRouter(()=>{
 			}
 		</React.Fragment>
     );
-});
+};
 
 function App(){
     return (

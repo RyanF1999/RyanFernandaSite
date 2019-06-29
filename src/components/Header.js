@@ -1,7 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import GridRoot from './GridRoot';
-import {Grid, Typography, Box} from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
+import {Grid, Typography, Box, makeStyles} from '@material-ui/core';
 import NavigationLink from './NavigationLink';
 
 const useStyle = makeStyles({
@@ -49,7 +47,7 @@ function Header(){
 
     return(
         <Grid component="header" container className={style.root} justify="center">
-            <Box component={GridRoot} item xs={12} pt={1} pb={0.25}>
+            <Box component={Grid} item xs={12} pt={1} pb={0.25}>
                 <Typography variant="h4" align="center">
                     Ryan Fernanda
                 </Typography>
@@ -61,7 +59,7 @@ function Header(){
             </Grid>
             <Box
                 py={1}
-                component={GridRoot}
+                component={Grid}
                 item
                 container
                 justify="center"
