@@ -13,9 +13,19 @@ const useStyle = makeStyles({
         height: 250
     },
     title: {
-        textAlign: 'center'
+        textAlign: 'center',
+        whiteSpace: 'pre-wrap',
+        wordBreak: 'break-word'
+    },
+    wrap: {
+        whiteSpace: 'pre-wrap',
+        wordBreak: 'break-word'
     }
 });
+
+const CardContentTypography = React.forwardRef((props, ref)=>
+    <CardContent component={Typography} {...props} innerRef={ref}/>
+);
 
 function AnimatedList(props){
     const style = useStyle();
@@ -41,17 +51,15 @@ function AnimatedList(props){
             style={anim}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            onClick={()=>{}}
+            onClick={()=>{window.location.href = props.link||'';}}
         >
             <CardHeader title={props.title} className={style.title}/>
             <CardMedia title={props.title} image={props.image} className={style.img}/>
-            <CardContent>
-                <Box height={50} fontWeight="fontWeightLight">
-                    <Typography>
-                        {props.desc}
-                    </Typography>
-                </Box>
-            </CardContent>
+            <Box component={CardContentTypography} minHeight={50} 
+                fontWeight="fontWeightLight" className={style.wrap}
+            >
+                {props.desc}
+            </Box>
         </Card>
     );
 }
