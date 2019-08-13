@@ -22,7 +22,7 @@ function CVMainContainer(props){
                     duration={650}
                     container
                 >
-                    {props.children}
+                    {props.children||[]}
                 </CVMainListAnim>
             </List>
         </Box>

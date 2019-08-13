@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {animated, useTrail} from 'react-spring';
 import {useSelector} from 'react-redux';
-import {Grid, ListItem, Divider} from '@material-ui/core';
+import {Grid, ListItem} from '@material-ui/core';
 
 // need props: duration, container, alignment
 function CVMainListAnim(props){
@@ -47,6 +47,8 @@ function CVMainListAnim(props){
             <React.Fragment>
                 {
                     trail.map((style, index)=>{
+                        const child = props.children.length > 1 ? props.children[index] : props.children;
+                        
                         // return version with divider if not last list
                         return(
                             <ListItem 
@@ -59,7 +61,7 @@ function CVMainListAnim(props){
                                 style={style}
                             >
                                 <Grid {...props} item>
-                                    {props.children[index]}
+                                    {child}
                                 </Grid>
                             </ListItem>
                         )

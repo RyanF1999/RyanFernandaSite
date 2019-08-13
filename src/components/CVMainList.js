@@ -15,7 +15,7 @@ function CVMainList(props){
             );
         }
         else{
-            return(null);
+            return null;
         }
     }
 

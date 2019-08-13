@@ -17,19 +17,6 @@ function CVProfileList(props){
     else
         arrDesc = [props.desc];
 
-    let index = -1;
-    let descriptions = arrDesc.map((desc) => {
-            index++;
-            return(
-                <Box marginBottom={2}>
-                    <Typography key={index} variant="body1">
-                        {desc}
-                    </Typography>
-                </Box>
-            );
-        }
-    )
-
     return (
         <React.Fragment>
             <Box item xs={4} px={0.5} component={Grid}>
@@ -44,7 +31,15 @@ function CVProfileList(props){
                     </Typography>
                 </Box>
                 <Grid item xs={12}>
-                    {descriptions}
+                    {
+                        arrDesc.map((desc, index) => 
+                            <Box marginBottom={2}>
+                                <Typography key={index} variant="body1">
+                                    {desc}
+                                </Typography>
+                            </Box>
+                        )
+                    }
                 </Grid>
             </Box>
         </React.Fragment>
