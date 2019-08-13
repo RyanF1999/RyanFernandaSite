@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {Route, Switch, __RouterContext} from 'react-router-dom';
 import {SetCurrentPage} from './actions/actions';
 import {useTransition, animated} from 'react-spring';
+import {CircularProgress, Box} from '@material-ui/core';
 
 const Header = lazy(()=>import('./components/Header'));
 const Footer = lazy(()=>import('./components/Footer'));
@@ -76,13 +77,19 @@ const AppContent = ()=>{
 
 function App(){
     return (
-		<Suspense fallback={<div></div>}>
+		<Suspense fallback={<Box 
+			component={CircularProgress} position='absolute' 
+			top='50%' left='50%'/>
+		}>
 			<CssBaseline/>
 			<Header/>
 			<CVScrollMarkWrapper/>
 			
 			<ContentContainer>
-				<Suspense fallback={<div>lel</div>}>	
+				<Suspense fallback={<Box 
+					component={CircularProgress} position='absolute' 
+					top='50%' left='50%'/>
+				}>	
 					<AppContent/>
 				</Suspense>
 			</ContentContainer>
