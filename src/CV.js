@@ -20,7 +20,6 @@ function CV(){
                 </CVProfile>
                 <CVMainContainer title="Work History" index={0} color='#53575C'>
                     <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
-                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
                     <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
                 </CVMainContainer>
                 <CVMainContainer title="Education History" index={1} color='#E4E2CD'>
@@ -30,9 +29,9 @@ function CV(){
                 </CVMainContainer>
                 <CVMainSkillContainer title="Skill" index={2} color='#E7A82C'>
                     <CVMainSkillList title="Title" cur={1} max={5}/>
-                    <CVMainSkillList title="Title" cur={3} max={5}/>
-                    <CVMainSkillList title="Title" cur={5} max={5}/>
-                    <CVMainSkillList title="Title" cur={3} max={5}/>
+                    <CVMainSkillList title="Title" cur={1} max={5}/>
+                    <CVMainSkillList title="Title" cur={1} max={5}/>
+                    <CVMainSkillList title="Title" cur={1} max={5}/>
                 </CVMainSkillContainer>
             </Grid>
         </Grid>
