@@ -3,6 +3,10 @@ import {animated, useTrail} from 'react-spring';
 import {useSelector} from 'react-redux';
 import {Grid, ListItem} from '@material-ui/core';
 
+const GridListItem = React.forwardRef((props, ref)=>
+    <ListItem component={animated.li} {...props} innerRef={ref}/>
+);
+
 // need props: duration, container, alignment
 function CVMainListAnim(props){
     const delay = useMemo(
@@ -51,19 +55,15 @@ function CVMainListAnim(props){
                         
                         // return version with divider if not last list
                         return(
-                            <ListItem 
+                            <Grid component={GridListItem} key={index} 
+                                style={style} item {...props} disableGutters
                                 divider={
                                     index !== props.children.length-1 
                                     && props.children.length > 1 ? true : false
                                 }
-                                component={animated.li}
-                                key={index} 
-                                style={style}
                             >
-                                <Grid {...props} item>
-                                    {child}
-                                </Grid>
-                            </ListItem>
+                                {child}
+                            </Grid>
                         )
                     })
                 }
