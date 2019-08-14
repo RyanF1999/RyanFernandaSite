@@ -16,15 +16,11 @@ function CVMainContainer(props){
     return (
         <Box ref={ref} component={Grid} py={2} container item direction="column">
             <CVMainHeader {...props}/>
-            <List>
-                <CVMainListAnim 
-                    index={props.index} 
-                    duration={650}
-                    container
-                >
+            <Grid component={List} container item>
+                <CVMainListAnim index={props.index} duration={650} container>
                     {props.children||[]}
                 </CVMainListAnim>
-            </List>
+            </Grid>
         </Box>
     );
 }

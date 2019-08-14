@@ -8,19 +8,21 @@ const useStyle = makeStyles({
     }
 });
 
+const GridTypography = React.forwardRef((props, ref)=>
+    <Grid component={Typography} {...props} innerRef={ref}/>
+);
+
 function CVMainList(props){
     const style = useStyle();
 
     const Desc = ()=>{
         if(props.desc !== undefined || props.desc !== ''){
             return(
-                <Grid item xs={12}>
-                    <Box component={Typography} paddingLeft={2} textAlign="left"
-                        variant="body2" className={style.wrap}
-                    >
-                        {props.desc}
-                    </Box>
-                </Grid>
+                <Box component={GridTypography} item xs={12} 
+                    paddingLeft={2} variant="body2" className={style.wrap}
+                >
+                    {props.desc}
+                </Box>
             );
         }
         else{
@@ -30,24 +32,20 @@ function CVMainList(props){
 
     return (
         <React.Fragment>
-            <Grid container item xs={6} md={8} direction="row">
-                <Box component={Grid} item xs={12} fontWeight="fontWeightBold">
-                    <Typography variant="h5" noWrap>
-                        {props.title}
-                    </Typography>
+            <Grid item xs={6} sm={8}>
+                <Box component={Typography} fontWeight="fontWeightBold"
+                    variant="h5" noWrap
+                >
+                    {props.title}
                 </Box>
-                <Grid item xs={12}>
-                    <Typography variant="body1" noWrap>
-                        {props.subtitle}
-                    </Typography>
-                </Grid>
+                <Box component={Typography} variant="body1" noWrap>
+                    {props.subtitle}
+                </Box>
             </Grid>
-            <Box component={Grid} container item xs alignItems="center" 
-                justify="flex-end" fontStyle="italic" fontWeight="fontWeightLight"
+            <Box component={GridTypography} item xs fontStyle="italic" 
+                fontWeight="fontWeightLight" variant="body1" textAlign="right"
             >
-                <Typography variant="body1">
-                    {props.time}    
-                </Typography>
+                {props.time}    
             </Box>
             <Desc/>
         </React.Fragment>

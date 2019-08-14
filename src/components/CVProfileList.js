@@ -12,6 +12,10 @@ const useStyle = makeStyles({
     }
 });
 
+const GridTypography = React.forwardRef((props, ref)=>
+    <Grid component={Typography} {...props} innerRef={ref}/>
+);
+
 function CVProfileList(props){
     const style = useStyle();
 
@@ -29,18 +33,18 @@ function CVProfileList(props){
             <Box px={0.5} item xs={8}
                 container direction="column" component={Grid} 
             >
-                <Box item xs={12} component={Grid} marginBottom={1}>
-                    <Typography variant="h5" noWrap>
-                        {props.title}
-                    </Typography>
+                <Box component={GridTypography} item xs={12} 
+                    marginBottom={1} variant="h5" noWrap
+                >
+                    {props.title}
                 </Box>
                 <Grid item xs={12}>
                     {
                         arrDesc.map((desc, index) => 
-                            <Box marginBottom={2}>
-                                <Typography key={index} variant="body1" className={style.wrap}>
-                                    {desc}
-                                </Typography>
+                            <Box component={Typography} marginBottom={2}
+                                key={index} variant="body1" className={style.wrap}
+                            >
+                                {desc}
                             </Box>
                         )
                     }
