@@ -6,8 +6,8 @@ import CVProfileList from './CVProfileList';
 function CVProfileContent(props){
     return(
         <Grid item container md={12} direction="row" spacing={4}>
-            <CVProfileContainer title="Test">
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
+            <CVProfileContainer title="TestTestTestTestTestTestTestTestTestTestTestTest">
+                <CVProfileList title="TitleTitleTitleTitleTitleTitleTitleTitle" desc="descdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdesc" icon="https://via.placeholder.com/150"/>
             </CVProfileContainer>
             <CVProfileContainer title="Test">
                 <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
