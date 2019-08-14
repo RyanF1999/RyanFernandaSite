@@ -45,7 +45,7 @@ function CVMainSkillList(props){
     return (
         <React.Fragment>
             <Box component={Grid} item pt={2} px={1} xs={12} fontWeight="fontWeightBold">
-                <Typography variant="h5">
+                <Typography variant="h5" noWrap>
                     {props.title}
                 </Typography>
             </Box>

@@ -5,6 +5,10 @@ const useStyle = makeStyles({
     root:{
         height: 'auto',
         width: '100%'
+    },
+    wrap: {
+        whiteSpace: 'pre-wrap',
+        wordBreak: 'break-word'
     }
 });
 
@@ -26,7 +30,7 @@ function CVProfileList(props){
                 container direction="column" component={Grid} 
             >
                 <Box item xs={12} component={Grid} marginBottom={1}>
-                    <Typography variant="h5">
+                    <Typography variant="h5" noWrap>
                         {props.title}
                     </Typography>
                 </Box>
@@ -34,7 +38,7 @@ function CVProfileList(props){
                     {
                         arrDesc.map((desc, index) => 
                             <Box marginBottom={2}>
-                                <Typography key={index} variant="body1">
+                                <Typography key={index} variant="body1" className={style.wrap}>
                                     {desc}
                                 </Typography>
                             </Box>

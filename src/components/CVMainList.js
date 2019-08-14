@@ -1,15 +1,24 @@
 import React from 'react';
-import {Grid, Typography, Box} from '@material-ui/core';
+import {Grid, Typography, Box, makeStyles} from '@material-ui/core';
+
+const useStyle = makeStyles({
+    wrap: {
+        whiteSpace: 'pre-wrap',
+        wordBreak: 'break-word'
+    }
+});
 
 function CVMainList(props){
+    const style = useStyle();
+
     const Desc = ()=>{
         if(props.desc !== undefined || props.desc !== ''){
             return(
                 <Grid item xs={12}>
-                    <Box paddingLeft={2} textAlign="left">
-                        <Typography variant="body2">        
-                            {props.desc}
-                        </Typography>
+                    <Box component={Typography} paddingLeft={2} textAlign="left"
+                        variant="body2" className={style.wrap}
+                    >
+                        {props.desc}
                     </Box>
                 </Grid>
             );
@@ -23,12 +32,12 @@ function CVMainList(props){
         <React.Fragment>
             <Grid container item xs={6} md={8} direction="row">
                 <Box component={Grid} item xs={12} fontWeight="fontWeightBold">
-                    <Typography variant="h5">
+                    <Typography variant="h5" noWrap>
                         {props.title}
                     </Typography>
                 </Box>
                 <Grid item xs={12}>
-                    <Typography variant="body1">
+                    <Typography variant="body1" noWrap>
                         {props.subtitle}
                     </Typography>
                 </Grid>
