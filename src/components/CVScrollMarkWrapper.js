@@ -1,8 +1,8 @@
 import React, { useState, useEffect, lazy} from 'react';
 import {useSelector} from 'react-redux';
-import {CurrentPage} from '../actions/actions';
 import {useSpring} from 'react-spring';
 
+import {CurrentPage} from '../actions/uiActions';
 const Hidden = lazy(()=>import('@material-ui/core/Hidden'));
 const CVScrollMark = lazy(()=>import('./CVScrollMark'));
 

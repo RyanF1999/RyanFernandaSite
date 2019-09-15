@@ -7,7 +7,7 @@ function Progress(props){
     const width = useMemo(
         ()=>props.cur/props.max * 100, [props.cur, props.max]
     );
-    const _showChild = useSelector(state => state.cvlist.get(props.index));
+    const _showChild = useSelector(state => state.cvlist[props.index]);
     const [showChild, SetShow] = useState(true);
 
     useEffect(()=>{

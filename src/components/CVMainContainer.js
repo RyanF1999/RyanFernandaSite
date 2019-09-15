@@ -3,14 +3,14 @@ import {List, Box, Grid} from '@material-ui/core';
 import CVMainListAnim from './CVMainListAnim';
 import CVMainHeader from './CVMainHeader';
 import {useDispatch} from 'react-redux';
-import { InitPageMark } from '../actions/actions';
+import { InitPageMark } from '../actions/uiActions';
 
 function CVMainContainer(props){
     const dispatch = useDispatch();
     const ref = useRef();
 
     useEffect(()=>{
-        dispatch(InitPageMark(props.title, ref));
+        dispatch(InitPageMark(props.title, ref.current));
     }, []);
 
     return (

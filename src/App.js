@@ -1,9 +1,11 @@
 import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
 import {useDispatch} from 'react-redux';
 import {Route, Switch, __RouterContext} from 'react-router-dom';
-import {SetCurrentPage} from './actions/actions';
 import {useTransition, animated} from 'react-spring';
 import {CircularProgress, Box} from '@material-ui/core';
+import {SetCurrentPage} from './actions/uiActions';
+import {FetchPortfolio} from './actions/databaseActions';
+import {FetchCV, FetchEducation, FetchSkill, FetchWork} from './actions/databaseActions';
 
 const Header = lazy(()=>import('./components/Header'));
 const Footer = lazy(()=>import('./components/Footer'));
@@ -76,6 +78,16 @@ const AppContent = ()=>{
 };
 
 function App(){
+	const dispatch = useDispatch();
+
+	useEffect(()=>{
+		dispatch(FetchPortfolio());
+		dispatch(FetchCV());
+        dispatch(FetchEducation());
+        dispatch(FetchWork());
+        dispatch(FetchSkill());
+	}, []);
+	
     return (
 		<Suspense fallback={<Box 
 			component={CircularProgress} position='absolute' 

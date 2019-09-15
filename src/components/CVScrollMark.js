@@ -27,17 +27,8 @@ const useStyle = makeStyles(theme => ({
 // data: {title: string, ref: ref}
 function CVScrollMark(props){
     const style = useStyle();
-    const data = useSelector(state => state.pagemark, ()=>false);
-
-    let marks = [];
-    for(const [key, value] of Object.entries(data)){
-        marks.push({
-            content: key,
-            key: key,
-            markRef: value
-        });
-    }
-
+    const pagemark = useSelector(state => state.pagemark);
+    
     return(
         <Box component={animated.div} {...props} className={style.root}
             pl={2} display='flex' alignItems='center'
@@ -46,9 +37,12 @@ function CVScrollMark(props){
                 bgcolor="#69C4E4" boxShadow={4}
             >
                 {
-                    marks.map((value)=>{
-                        return <CVScrollButton {...value}/>
-                    })
+                    Object.entries(pagemark).map(([key, value])=> <CVScrollButton 
+                            key={key} 
+                            content={key} 
+                            markRef={value}
+                        />
+                    )
                 }
             </Box>
         </Box>

@@ -19,12 +19,12 @@ function CVProfileHeader(props){
             <Box padding={2.5} component={Grid} xs item 
                 container height={300} justifyContent="center"
             >
-                <img className={style.root} src="https://via.placeholder.com/150"/>
+                <img className={style.root} src={props.img}/>
             </Box>
             <Box component={Grid} xs={12} item py={2.5} px={10}>
                 <Box fontStyle="italic" display="flex" flexWrap="wrap">
                     <Typography variant="h5">
-                        
+                        {props.desc}
                     </Typography>
                 </Box>
             </Box>

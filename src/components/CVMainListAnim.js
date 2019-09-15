@@ -14,7 +14,7 @@ function CVMainListAnim(props){
             props.children.length, props.duration
         ]
     );
-    const _showChild = useSelector(state => state.cvlist.get(props.index));
+    const _showChild = useSelector(state => state.cvlist[props.index]);
     const [showChild, SetShow] = useState(true);
     // transition consist of setTimeout check if isTransition is null and not null
     const [isTransition, SetTransition] = useState(false);

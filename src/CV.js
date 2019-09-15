@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import CVMainContainer from './components/CVMainContainer';
 import CVMainList from './components/CVMainList';
 import CVMainSkillContainer from './components/CVMainSkillContainer';
@@ -9,29 +10,52 @@ import CVProfileContent from './components/CVProfileContent';
 import {Grid} from '@material-ui/core';
 
 function CV(){
+    const cv = useSelector(state => state.database.cv);
+    const education = useSelector(state => state.database.education);
+    const work = useSelector(state => state.database.work);
+    const skill = useSelector(state => state.database.skill);
+
     // col in left contain = Profile -> Main CV Content
     // col in right contain = scroll spy and bookmark(for pc only)
     return (
         <Grid container>
             <Grid item container direction="column" md={9} lg={10} xl={11}>
                 <CVProfile>
-                    <CVProfileHeader/>
-                    <CVProfileContent/>
+                    <CVProfileHeader img={cv.profile_img} desc={cv.description}/>
+                    <CVProfileContent data={cv.informations}/>
                 </CVProfile>
                 <CVMainContainer title="Work History" index={0} color='#53575C'>
-                    <CVMainList title="TitleTitleTitleTitleTitleTitle" subtitle="SubtitleSubtitleSubtitleSubtitleSubtitleSubtitle" time="2000 - Present"/>
-                    <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
+                    {
+                        work.map(({title, subtitle, time}) => <CVMainList 
+                                key={title}
+                                title={title}
+                                subtitle={subtitle || ""}
+                                time={time}
+                            />
+                        )
+                    }
                 </CVMainContainer>
                 <CVMainContainer title="Education History" index={1} color='#E4E2CD'>
-                    <CVMainList title="Title" subtitle="Subtitle" time="2000 - Present"/>
-                    <CVMainList title="Title" subtitle="Subtitle" desc="descdescdescdescdescdescdescdescdescdescdescdescdescdescdescdesc" time="2000 - Present"/>
-                    <CVMainList title="Title" subtitle="Subtitle" desc="desc" time="2000 - Present"/>
+                    {
+                        education.map(({title, subtitle, time}) => <CVMainList 
+                                key={title}        
+                                title={title}
+                                subtitle={subtitle || ""}
+                                time={time}
+                            />
+                        )
+                    }
                 </CVMainContainer>
                 <CVMainSkillContainer title="Skill" index={2} color='#E7A82C'>
-                    <CVMainSkillList title="Title" cur={1} max={5}/>
-                    <CVMainSkillList title="Title" cur={1} max={5}/>
-                    <CVMainSkillList title="Title" cur={1} max={5}/>
-                    <CVMainSkillList title="Title" cur={1} max={5}/>
+                    {
+                        skill.map(({title, rating}) => <CVMainSkillList
+                                key={title}
+                                title={title}
+                                cur={rating}
+                                max={5}
+                            />
+                        )
+                    }
                 </CVMainSkillContainer>
             </Grid>
         </Grid>

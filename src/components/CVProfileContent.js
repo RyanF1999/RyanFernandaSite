@@ -6,20 +6,23 @@ import CVProfileList from './CVProfileList';
 function CVProfileContent(props){
     return(
         <Grid item container md={12} direction="row" spacing={4}>
-            <CVProfileContainer title="TestTestTestTestTestTestTestTestTestTestTestTest">
-                <CVProfileList title="TitleTitleTitleTitleTitleTitleTitleTitle" desc="descdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdescdesc" icon="https://via.placeholder.com/150"/>
-            </CVProfileContainer>
-            <CVProfileContainer title="Test">
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-            </CVProfileContainer>
-            <CVProfileContainer title="Test">
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-            </CVProfileContainer>
-            <CVProfileContainer title="Test">
-                <CVProfileList title="Title" desc="desc" icon="https://via.placeholder.com/150"/>
-            </CVProfileContainer>
+            {
+                props.data.map(({title, contents}) => <CVProfileContainer 
+                        key={title}
+                        title={title}
+                    >
+                        {
+                            contents.map(({title, desc, icon}) => <CVProfileList 
+                                key={title} 
+                                title={title} 
+                                desc={desc} 
+                                icon={icon || ""}
+                            />
+                            )
+                        }
+                    </CVProfileContainer>
+                )
+            }
         </Grid>
     )
 }
