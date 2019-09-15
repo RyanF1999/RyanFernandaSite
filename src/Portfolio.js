@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import Grid from '@material-ui/core/Grid';
+
 import {useSelector} from 'react-redux';
+
 import PortfolioList from './components/PortfolioList';
-import {Grid} from '@material-ui/core';
 
 function Portfolio(){
     const portfolio = useSelector(state => state.database.portfolio);

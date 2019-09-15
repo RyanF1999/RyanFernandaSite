@@ -1,7 +1,11 @@
 import React, {useMemo, useState, useEffect} from 'react';
-import {animated, useSpring} from 'react-spring';
+
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+
 import {useSelector} from 'react-redux';
-import {Grid, Typography, Box} from '@material-ui/core';
+import {animated, useSpring} from 'react-spring';
 
 function Progress(props){
     const width = useMemo(

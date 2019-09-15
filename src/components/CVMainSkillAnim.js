@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {animated, useTrail} from 'react-spring';
+
+import Grid from '@material-ui/core/Grid';
+
 import {useSelector} from 'react-redux';
-import {Grid} from '@material-ui/core';
+import {animated, useTrail} from 'react-spring';
 
 // need props: duration, container, alignment
 function CVMainSkillAnim(props){

@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import { Box, Grid, makeStyles } from '@material-ui/core';
-import {animated} from 'react-spring';
+
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
 import {useSelector} from 'react-redux';
+import {animated} from 'react-spring';
+
 import CVScrollButton from './CVScrollButton';
 
 const useStyle = makeStyles(theme => ({

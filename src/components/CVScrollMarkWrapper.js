@@ -1,8 +1,10 @@
 import React, { useState, useEffect, lazy} from 'react';
+
 import {useSelector} from 'react-redux';
 import {useSpring} from 'react-spring';
 
 import {CurrentPage} from '../actions/uiActions';
+
 const Hidden = lazy(()=>import('@material-ui/core/Hidden'));
 const CVScrollMark = lazy(()=>import('./CVScrollMark'));
 
@@ -38,7 +40,7 @@ function CVScrollMarkWrapper(){
 			</Hidden>
         )
     }else{
-        return(null)
+        return null;
     }
 };
 

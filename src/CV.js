@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import Grid from '@material-ui/core/Grid';
+
 import {useSelector} from 'react-redux';
+
 import CVMainContainer from './components/CVMainContainer';
 import CVMainList from './components/CVMainList';
 import CVMainSkillContainer from './components/CVMainSkillContainer';
@@ -7,7 +11,6 @@ import CVMainSkillList from './components/CVMainSkillList';
 import CVProfile from './components/CVProfile';
 import CVProfileHeader from './components/CVProfileHeader';
 import CVProfileContent from './components/CVProfileContent';
-import {Grid} from '@material-ui/core';
 
 function CV(){
     const cv = useSelector(state => state.database.cv);

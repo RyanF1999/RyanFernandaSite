@@ -1,8 +1,13 @@
 import React, {useEffect, useRef} from 'react';
-import {List, Box, Grid} from '@material-ui/core';
+
+import List from '@material-ui/core/List';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+
+import {useDispatch} from 'react-redux';
+
 import CVMainListAnim from './CVMainListAnim';
 import CVMainHeader from './CVMainHeader';
-import {useDispatch} from 'react-redux';
 import { InitPageMark } from '../actions/uiActions';
 
 function CVMainContainer(props){

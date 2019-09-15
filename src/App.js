@@ -1,6 +1,9 @@
 import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
-import {useDispatch} from 'react-redux';
+
 import {Route, Switch, __RouterContext} from 'react-router-dom';
+
+import {useDispatch} from 'react-redux';
+
 import {useTransition, animated} from 'react-spring';
 
 import LoadingIndicator from './components/LoadingIndicator';

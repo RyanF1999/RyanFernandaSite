@@ -1,5 +1,8 @@
 import React, {useEffect, useRef}  from 'react';
-import {Box, Grid} from '@material-ui/core';
+
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+
 import {useDispatch} from 'react-redux';
 import { InitPageMark } from '../actions/uiActions';
 

@@ -1,7 +1,10 @@
 import React, {useState, useEffect, useMemo} from 'react';
-import {animated, useTrail} from 'react-spring';
+
+import Grid from '@material-ui/core/Grid';
+import ListItem from '@material-ui/core/ListItem';
+
 import {useSelector} from 'react-redux';
-import {Grid, ListItem} from '@material-ui/core';
+import {animated, useTrail} from 'react-spring';
 
 const GridListItem = React.forwardRef((props, ref)=>
     <ListItem component={animated.li} {...props} innerRef={ref}/>

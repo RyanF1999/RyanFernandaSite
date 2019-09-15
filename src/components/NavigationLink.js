@@ -1,8 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
+
 import {Link} from 'react-router-dom';
+
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
 import {useSelector, useDispatch} from 'react-redux';
 import {useSpring, animated, config} from 'react-spring';
-import {Grid, Typography} from '@material-ui/core';
+
 import {SetCurrentPage} from '../actions/uiActions';
 
 const AnimLink = animated(Link);

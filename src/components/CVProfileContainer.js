@@ -1,5 +1,10 @@
 import React from 'react';
-import {Grid, Typography, Box, List, ListItem} from '@material-ui/core';
+
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 function CVProfileContainer(props){
     return (
