@@ -59,7 +59,7 @@ function Header(){
             </Box>
             <Grid item xs={12} ref={triggerRef}>
                 <Typography variant="h5" align="center">
-                    IT Developer
+                    Full Stack Web Developer
                 </Typography>
             </Grid>
             <Box
