@@ -2,7 +2,8 @@ import React, { useState, useEffect, lazy, Suspense, useContext} from 'react';
 import {useDispatch} from 'react-redux';
 import {Route, Switch, __RouterContext} from 'react-router-dom';
 import {useTransition, animated} from 'react-spring';
-import {CircularProgress, Box} from '@material-ui/core';
+
+import LoadingIndicator from './components/LoadingIndicator';
 import {SetCurrentPage} from './actions/uiActions';
 import {FetchPortfolio} from './actions/databaseActions';
 import {FetchCV, FetchEducation, FetchSkill, FetchWork} from './actions/databaseActions';
@@ -89,19 +90,13 @@ function App(){
 	}, []);
 	
     return (
-		<Suspense fallback={<Box 
-			component={CircularProgress} position='absolute' 
-			top='50%' left='50%'/>
-		}>
+		<Suspense fallback={<LoadingIndicator/>}>
 			<CssBaseline/>
 			<Header/>
 			<CVScrollMarkWrapper/>
 			
 			<ContentContainer>
-				<Suspense fallback={<Box 
-					component={CircularProgress} position='absolute' 
-					top='50%' left='50%'/>
-				}>	
+				<Suspense fallback={<LoadingIndicator/>}>	
 					<AppContent/>
 				</Suspense>
 			</ContentContainer>
