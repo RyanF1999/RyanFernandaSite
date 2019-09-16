@@ -2,7 +2,9 @@ import Axios from '../Axios';
 
 export const FetchPortfolio = () => async dispatch => {
     try{
-        const data = await Axios.get('Portfolio');
+        const data = await Axios.get('Portfolio', {
+            orderBy: "title: asc"
+        });
         console.log(data.data);
         dispatch({
             type: "FETCH_PORTFOLIO", 
@@ -54,7 +56,9 @@ export const FetchWork = () => async dispatch => {
 
 export const FetchSkill = () => async dispatch => {
     try{
-        const data = await Axios.get('Skill');
+        const data = await Axios.get('Skill', {
+            orderBy: "rating: desc"
+        });
         console.log(data.data);
         dispatch({
             type: "FETCH_SKILL", 
