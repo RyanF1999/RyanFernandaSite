@@ -3,7 +3,9 @@ import Axios from '../Axios';
 export const FetchPortfolio = () => async dispatch => {
     try{
         const data = await Axios.get('Portfolio', {
-            orderBy: "title: asc"
+            params: {
+                orderBy: "title:asc"
+            }
         });
         console.log(data.data);
         dispatch({
@@ -57,7 +59,9 @@ export const FetchWork = () => async dispatch => {
 export const FetchSkill = () => async dispatch => {
     try{
         const data = await Axios.get('Skill', {
-            orderBy: "rating: desc"
+            params: {
+                orderBy: "rating: desc, title: asc"
+            }
         });
         console.log(data.data);
         dispatch({
