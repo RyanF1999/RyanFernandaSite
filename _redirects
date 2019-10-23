@@ -3,4 +3,9 @@
 
 # Redirect default Netlify subdomain to primary domain
 http://ryanfernanda.netlify.com/* https://www.ryanfernanda.com/:splat 301!
+https://ryanfernanda.netlify.com/* https://www.ryanfernanda.com/:splat 301!
+http://www.ryanfernanda.netlify.com/* https://www.ryanfernanda.com/:splat 301!
+https://www.ryanfernanda.netlify.com/* https://www.ryanfernanda.com/:splat 301!
+http://ryanfernanda.com/* https://www.ryanfernanda.com/:splat 301!
 http://www.ryanfernanda.com/* https://www.ryanfernanda.com/:splat 301!
+
