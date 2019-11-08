@@ -1,6 +1,6 @@
 {
     "name": "RyanFernandaSite",
-    "version": 1,
+    "version": 2,
     "alias": ["ryanfernanda.com"],
     "builds": [
         { "src": "next.config.js", "use": "@now/next" }
