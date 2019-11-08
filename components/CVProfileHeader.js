@@ -5,6 +5,8 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import LoadingIndicator from './LoadingIndicator';
+
 const useStyle = makeStyles({
     root: {
         height: '100%',
@@ -23,7 +25,7 @@ function CVProfileHeader(props){
             <Box padding={2.5} component={Grid} xs item 
                 container height={300} justifyContent="center"
             >
-                <img className={style.root} src={props.img}/>
+                <img className={style.root} src={props.img} alt="Ryan Fernanda"/>
             </Box>
             <Box component={Grid} xs={12} item py={2.5} px={10}>
                 <Box fontStyle="italic" display="flex" flexWrap="wrap">

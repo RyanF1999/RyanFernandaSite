@@ -53,7 +53,7 @@ function CVScrollButton(props){
 
     const anim = useSpring({
         to:{
-            fontSize: active || hover ? '200%' : '150%',
+            fontSize: active || hover ? '150%' : '125%',
             border: active ? '10px solid' : '0px solid'
         },
         config:{

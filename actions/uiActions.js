@@ -1,13 +1,3 @@
-export const CurrentPage = {
-    PORTFOLIO: 'PORTFOLIO',
-    CV: 'CV'
-};
-
-// Action Creator
-export function SetCurrentPage(page){
-    return {type: "SET_CURRENT_PAGE", page: page}
-}
-
 // action for main cv list
 /*
     data: CvList Container key

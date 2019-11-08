@@ -1,9 +1,6 @@
 import {createReducer} from './helpers';
 import {produce} from 'immer';
 
-// page reducer
-const setCurrentPage = (state, action) => action.page;
-
 // cvlist reducer
 const showCvList = (state, action) => produce(state, draft=>{
     const {index} = action;
@@ -29,10 +26,6 @@ const setCurrentPageMark = (state, action) => produce(state, draft=>{
 });
 
 // reducers
-export const pageReducer = createReducer('', {
-    SET_CURRENT_PAGE: setCurrentPage
-});
-
 export const cvlistReducer = createReducer({}, {
     SHOW_CV_LIST: showCvList,
     HIDE_CV_LIST: hideCvList

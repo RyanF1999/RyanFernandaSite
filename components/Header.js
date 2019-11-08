@@ -27,7 +27,7 @@ const useStyle = makeStyles({
         position: 'fixed',
         top: 0
     }
-})
+});
 
 function Header(){
     const style = useStyle();
@@ -70,8 +70,8 @@ function Header(){
                 justify="center"
                 className={isSticky ? style.navsticky : style.nav}
             >
-                <NavigationLink to="/" content="Portfolio" page='PORTFOLIO'/>
-                <NavigationLink to="/cv" content="CV" page='CV'/>
+                <NavigationLink to="/" content="Portfolio"/>
+                <NavigationLink to="/profile" content="Profile"/>
             </Box>
         </Grid>
     );

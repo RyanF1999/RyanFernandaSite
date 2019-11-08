@@ -7,10 +7,10 @@ function ContentContainer(props){
     return(
         <Box
             minHeight='100vh'
-            component={Container} 
+            component={Container}
             maxWidth="xl"
-            py={5}
-            mt={18}
+            py={props.py}
+            mt={props.mt}
         >
             {
                 props.children

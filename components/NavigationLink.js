@@ -1,21 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
-
-import {Link} from 'react-router-dom';
+import {useRouter} from 'next/router';
+import Link from 'next/link';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import {useSelector, useDispatch} from 'react-redux';
 import {useSpring, animated, config} from 'react-spring';
 
-import {SetCurrentPage} from '../actions/uiActions';
-
-const AnimLink = animated(Link);
-
 const AnimatedLink = React.forwardRef((props, ref)=>{
-    const dispatch = useDispatch();
-    const curPage = useSelector(state => state.page);
-    const [active, SetActive] = useState(props.page === curPage ? true : false);
+    const router = useRouter();
+    const [active, SetActive] = useState(props.to === router.pathname ? true : false);
     const [hover, SetHover] = useState(false);
     const mounted = useRef(false);
     
@@ -26,32 +20,32 @@ const AnimatedLink = React.forwardRef((props, ref)=>{
 
     useEffect(()=>{
         if(mounted){
-            if(props.page === curPage) SetActive(true);
+            if(props.to === router.pathname) SetActive(true);
             else SetActive(false);
         }
-    }, [curPage]);
+    }, [router]);
 
     const linkAnim = useSpring({
         config: config.gentle,
         to: {
             transform: active ? 'scale(1.35)' : 'scale(1.1)',
             color: (active || hover) ?'blue' : 'white',
-            textDecoration: (active) ? 'underline' : (hover) ? 'none' : 'none'
+            textDecoration: (active) ? 'underline' : (hover) ? 'none' : 'none',
+            userSelect: 'none'
         },
         native: true
     });
 
     return(
-        <AnimLink
-            to={props.to}
-            innerRef={ref}
-            style={linkAnim}
-            onClick={() => dispatch(SetCurrentPage(props.page))} 
-            onMouseEnter={() => SetHover(true)} 
-            onMouseLeave={() => SetHover(false)}
-        >
-            {props.content}
-        </AnimLink>
+        <Link href={props.to}>
+            <animated.a ref={ref}
+                style={linkAnim}
+                onMouseEnter={() => SetHover(true)} 
+                onMouseLeave={() => SetHover(false)}
+            >
+                {props.content}
+            </animated.a>
+        </Link>
     );
 });
 
