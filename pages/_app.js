@@ -12,12 +12,12 @@ import {Provider} from 'react-redux';
 import NavigationProgress from '../components/NavigationProgress';
 import ContentContainer from '../components/ContentContainer';
 
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 import reducers from '../reducers';
 
-const Header = dynamic(() => import('../components/Header'), {ssr: false});
-const CVScrollMarkWrapper = dynamic(() => import('../components/CVScrollMarkWrapper'), {ssr: false});
+const CVScrollMarkWrapper = dynamic(() => import('../components/CVScrollMarkWrapper'));
 
 const store = createStore(reducers);
 

@@ -34,20 +34,21 @@ function Header(){
     const [isSticky, SetSticky] = useState(true);
     const triggerRef = useRef();
 
-    // will make navigation into fixed after stuck in top
-    const navsticky = new IntersectionObserver((entries)=>{
-        entries.forEach(entry =>{
-            if(entry.isIntersecting){
-                SetSticky(false);
-            }else{
-                SetSticky(true);
-            }
-        })
-    }, {threshold: 0});
-
     useEffect(()=>{
+        // will make navigation into fixed after stuck in top
+        const navsticky = new IntersectionObserver((entries)=>{
+            entries.forEach(entry =>{
+                if(entry.isIntersecting){
+                    SetSticky(false);
+                }else{
+                    SetSticky(true);
+                }
+            })
+        }, {threshold: 0});
+
         navsticky.observe(triggerRef.current);
-        return ()=>navsticky.disconnect()
+
+        return ()=>navsticky.disconnect();
     }, []);
 
     return(

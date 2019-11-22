@@ -20,23 +20,24 @@ function CVScrollButton(props){
     const [active, SetActive] = useState(false);
     const [hover, SetHover] = useState(false);
 
-    // will make navigation into fixed after stuck in top
-    const mark = new IntersectionObserver((entries)=>{
-        entries.forEach(entry =>{
-            if(entry.isIntersecting && !curpagemark.moving){
-                //console.log(`dispatch ${props.content}`);
-                dispatch(SetCurrentPageMark(props.content, false));
-            }else if(curpagemark.moving && curpagemark.title === props.content){
-                // finish scrolling and update curpagemark moving state to false
-                //console.log('finish');
-                dispatch(SetCurrentPageMark(props.content, false));
-            }
-        })
-    }, {threshold: 0.1, rootMargin: '-30%'});
-
     useEffect(()=>{
+        // will make navigation into fixed after stuck in top
+        const mark = new IntersectionObserver((entries)=>{
+            entries.forEach(entry =>{
+                if(entry.isIntersecting && !curpagemark.moving){
+                    //console.log(`dispatch ${props.content}`);
+                    dispatch(SetCurrentPageMark(props.content, false));
+                }else if(curpagemark.moving && curpagemark.title === props.content){
+                    // finish scrolling and update curpagemark moving state to false
+                    //console.log('finish');
+                    dispatch(SetCurrentPageMark(props.content, false));
+                }
+            })
+        }, {threshold: 0.1, rootMargin: '-30%'});
+        
         mark.observe(props.markRef);
-        return ()=>mark.disconnect()
+
+        return ()=>mark.disconnect();
     }, []);
 
     useEffect(()=>{
