@@ -96,22 +96,21 @@ Profile.getInitialProps = async (ctx) => {
     let skill = [];
 
     try{
-        const cvData = await Axios.get('CV');
+        const [cvData, educationData, workData, skillData] = await Promise.all([
+            Axios.get('CV'),
+            Axios.get('Education'),
+            Axios.get('Work'),
+            Axios.get('Skill', {
+                params: {
+                    orderBy: "rating: desc, title: asc"
+                }
+            })
+        ]);
+        
         cv = cvData.data[0].data;
-
-        const educationData = await Axios.get('Education');
         education = educationData.data.map(value => value.data);
-        
-        const workData = await Axios.get('Work');
         work = workData.data.map(value => value.data);
-
-        const skillData = await Axios.get('Skill', {
-            params: {
-                orderBy: "rating: desc, title: asc"
-            }
-        });
         skill = skillData.data.map(value => value.data);
-        
     }catch(err){
         console.log(err);
     }
