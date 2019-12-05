@@ -14,10 +14,9 @@ import ContentContainer from '../components/ContentContainer';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CVScrollMarkWrapper from '../components/CVScrollMarkWrapper';
 
 import reducers from '../reducers';
-
-const CVScrollMarkWrapper = dynamic(() => import('../components/CVScrollMarkWrapper'));
 
 const store = createStore(reducers);
 
