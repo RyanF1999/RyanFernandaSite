@@ -1,19 +1,21 @@
 import React from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
 function CVProfileContainer(props){
+
     return (
         <Grid item xs={12} md={6}>
-            <Box component={Typography} variant="h4" noWrap
-                fontWeight="fontWeightBold" textAlign="center"
+            <Typography
+                variant="h4" 
+                component="h3"
+                noWrap
             >
                 {props.title}
-            </Box>
+            </Typography>
             <List>
                 {
                     React.Children.map(props.children, (child, index)=>{

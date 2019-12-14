@@ -54,12 +54,12 @@ function Header(){
     return(
         <Grid component="header" container className={style.root} justify="center">
             <Box component={Grid} item xs={12} pt={1} pb={0.25}>
-                <Typography variant="h4" align="center">
+                <Typography variant="h4" component="h1" align="center">
                     Ryan Fernanda
                 </Typography>
             </Box>
             <Grid item xs={12} ref={triggerRef}>
-                <Typography variant="h5" align="center">
+                <Typography variant="h5" component="h2" align="center">
                     Web Developer/Mobile Developer/Electron JS Developer
                 </Typography>
             </Grid>

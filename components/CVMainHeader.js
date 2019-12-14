@@ -23,7 +23,7 @@ function CVMainHeader(props){
                     <CVMainDropdownBtn index={props.index}/>
                 </Grid>
                 <Grid item xs>
-                    <Typography variant="h4" className={style.title}>
+                    <Typography variant="h4" component="h3" className={style.title}>
                         {props.title}
                     </Typography>
                 </Grid>

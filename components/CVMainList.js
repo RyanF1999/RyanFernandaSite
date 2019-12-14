@@ -37,14 +37,12 @@ function CVMainList(props){
     return (
         <React.Fragment>
             <Grid item xs={6} sm={8}>
-                <Box component={Typography} fontWeight="fontWeightBold"
-                    variant="h5" noWrap
-                >
+                <Typography variant="h5" component="p" noWrap>
                     {props.title}
-                </Box>
-                <Box component={Typography} variant="body1" noWrap>
+                </Typography>
+                <Typography variant="body1" noWrap>
                     {props.subtitle}
-                </Box>
+                </Typography>
             </Grid>
             <Box component={GridTypography} item xs fontStyle="italic" 
                 fontWeight="fontWeightLight" variant="body1" textAlign="right"
