@@ -26,23 +26,22 @@ class RootDocument extends Document {
     return (
       <Html lang="en-US">
         <Head>
-            <meta charset="utf-8" />
-            <link rel="shortcut icon" href="/favicon.ico" />
-            <link rel="apple-touch-icon" href="/apple-icon-180x180.png"/>
-            <meta
+          <meta charSet="utf-8" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/apple-icon-180x180.png" />
+          <meta
             name="viewport"
             content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, maximum-scale=5"
-            />
-            <meta name="theme-color" content="#69C4E4"/>
-            <meta name="author" content="Ryan Fernanda"/>
-            
-            <link rel="manifest" href="/manifest.json" />
-            
-            <style jsx global>{`
+          />
+          <meta name="theme-color" content="#69C4E4" />
+          <meta name="author" content="Ryan Fernanda" />
+
+          <link rel="manifest" href="/manifest.json" />
+
+          <style jsx global>{`
                 body{
                     overflow-x: hidden;
                     overflow-y: auto;
-                    background-color: #E8EFEF !important;
                 }
             
                 @media (max-width: 575px) {

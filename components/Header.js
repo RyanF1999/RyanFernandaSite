@@ -1,81 +1,82 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import NavigationLink from './NavigationLink';
 
-const useStyle = makeStyles({
-    root: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 10,
-        backgroundColor: '#69C4E4',
-    },
-    nav: {
-        boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
-        zIndex: 10
-    },
-    navsticky: {
-        backgroundColor: '#69C4E4',
-        boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
-        zIndex: 10,
-        position: 'fixed',
-        top: 0
-    }
-});
+const useStyle = makeStyles(theme => ({
+  root: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 10,
+    backgroundColor: theme.palette.primary.main,
+  },
+  nav: {
+    boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
+    zIndex: 10,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+  navsticky: {
+    backgroundColor: theme.palette.primary.main,
+    boxShadow: '0px 5px 5px -1px rgba(0,0,0,0.3)',
+    zIndex: 10,
+    position: 'fixed',
+    top: 0,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  }
+}));
 
-function Header(){
-    const style = useStyle();
-    const [isSticky, SetSticky] = useState(true);
-    const triggerRef = useRef();
+function Header() {
+  const style = useStyle();
+  const [isSticky, SetSticky] = useState(true);
+  const triggerRef = useRef();
 
-    useEffect(()=>{
-        // will make navigation into fixed after stuck in top
-        const navsticky = new IntersectionObserver((entries)=>{
-            entries.forEach(entry =>{
-                if(entry.isIntersecting){
-                    SetSticky(false);
-                }else{
-                    SetSticky(true);
-                }
-            })
-        }, {threshold: 0});
+  useEffect(() => {
+    // will make navigation into fixed after stuck in top
+    const navsticky = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          SetSticky(false);
+        } else {
+          SetSticky(true);
+        }
+      })
+    }, { threshold: 0 });
 
-        navsticky.observe(triggerRef.current);
+    navsticky.observe(triggerRef.current);
 
-        return ()=>navsticky.disconnect();
-    }, []);
+    return () => navsticky.disconnect();
+  }, []);
 
-    return(
-        <Grid component="header" container className={style.root} justify="center">
-            <Box component={Grid} item xs={12} pt={1} pb={0.25}>
-                <Typography variant="h4" component="h1" align="center">
-                    Ryan Fernanda
-                </Typography>
-            </Box>
-            <Grid item xs={12} ref={triggerRef}>
-                <Typography variant="h5" component="h2" align="center">
-                    Web Developer/Mobile Developer/Electron JS Developer
-                </Typography>
-            </Grid>
-            <Box
-                py={1}
-                component={Grid}
-                item
-                container
-                justify="center"
-                className={isSticky ? style.navsticky : style.nav}
-            >
-                <NavigationLink to="/" content="Portfolio"/>
-                <NavigationLink to="/profile" content="Profile"/>
-            </Box>
-        </Grid>
-    );
+  return (
+    <Grid component="header" container className={style.root} justify="center">
+      <Grid item xs={12}>
+        <Typography variant="h4" component="h1" align="center">
+          Ryan Fernanda
+        </Typography>
+      </Grid>
+      <Grid item xs={12} ref={triggerRef}>
+        <Typography variant="h5" component="h2" align="center">
+          Web Developer/Mobile Developer/Electron JS Developer
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        container
+        justify="center"
+        className={isSticky ? style.navsticky : style.nav}
+      >
+        <NavigationLink to="/" content="Portfolio" />
+        <NavigationLink to="/profile" content="Profile" />
+      </Grid>
+    </Grid>
+  );
 }
 
 export default Header;

@@ -1,33 +1,42 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import List from '@material-ui/core/List';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 
-import {useDispatch} from 'react-redux';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import { useDispatch } from 'react-redux';
 
 import CVMainListAnim from './CVMainListAnim';
 import CVMainHeader from './CVMainHeader';
 import { InitPageMark } from '../actions/uiActions';
 
-function CVMainContainer(props){
-    const dispatch = useDispatch();
-    const ref = useRef();
+const useStyle = makeStyles(theme => ({
+  root: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2)
+  }
+}));
 
-    useEffect(()=>{
-        dispatch(InitPageMark(props.title, ref.current));
-    }, []);
+function CVMainContainer(props) {
+  const style = useStyle();
+  const dispatch = useDispatch();
+  const ref = useRef();
 
-    return (
-        <Box ref={ref} component={Grid} py={2} container item direction="column">
-            <CVMainHeader {...props}/>
-            <Grid component={List} container item>
-                <CVMainListAnim index={props.index} duration={650} container>
-                    {props.children||[]}
-                </CVMainListAnim>
-            </Grid>
-        </Box>
-    );
+  useEffect(() => {
+    dispatch(InitPageMark(props.title, ref.current));
+  }, []);
+
+  return (
+    <Grid ref={ref} container item direction="column" className={style.root}>
+      <CVMainHeader {...props} />
+      <Grid component={List} container item>
+        <CVMainListAnim index={props.index} duration={650} container>
+          {props.children || []}
+        </CVMainListAnim>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default CVMainContainer;

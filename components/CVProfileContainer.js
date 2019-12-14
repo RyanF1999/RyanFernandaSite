@@ -5,39 +5,31 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 
-function CVProfileContainer(props){
+function CVProfileContainer(props) {
 
-    return (
-        <Grid item xs={12} md={6}>
-            <Typography
-                variant="h4" 
-                component="h3"
-                noWrap
-            >
-                {props.title}
-            </Typography>
-            <List>
-                {
-                    React.Children.map(props.children, (child, index)=>{
-                        return(
-                            <ListItem
-                                component={Grid}
-                                divider={
-                                    index !== props.children.length-1 
-                                    && props.children.length > 1 ? true : false
-                                }
-                                item
-                                container
-                                alignItems="flex-start"
-                            >
-                                {child}
-                            </ListItem>
-                        )
-                    })
-                }
-            </List>
-        </Grid>
-    );
+  return (
+    <Grid item xs={12} md={6}>
+      <Typography variant="h4" component="h3" noWrap>
+        {props.title}
+      </Typography>
+      <List>
+        {
+          React.Children.map(props.children, (child, index) => {
+            const divider = index !== props.children.length - 1 
+              && props.children.length > 1 ? true : false;
+
+            return (
+              <ListItem divider={divider}>
+                <Grid container alignItems="flex-start">
+                  {child}
+                </Grid>
+              </ListItem>
+            )
+          })
+        }
+      </List>
+    </Grid>
+  );
 }
 
 export default CVProfileContainer;
