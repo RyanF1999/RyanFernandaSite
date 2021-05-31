@@ -7,7 +7,7 @@ import CVProfileList from './CVProfileList';
 
 function CVProfileContent(props) {
   return (
-    <Grid item container md={12} direction="row" spacing={4}>
+    <Grid item container sm={12} direction="row" spacing={4}>
       {
         props.data.map(({ title, contents }) => <CVProfileContainer
           key={title}
